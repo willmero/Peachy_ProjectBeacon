@@ -17,30 +17,17 @@ function callbackAcceptedDeviced()
         var name = item.name;
         if (BT_Devices[name])
         {
-            item.callback(name, BT_Devices[name].rssi, BT_Devices[name].id);
+            var size = -1*BT_Devices[name].rssi;
+            if(size > 120)
+                size = 120;
+            if(size < 20)
+                size = 20;
+            size = (100 - (size - 20))/ 100;
+
+            item.callback(name, size, BT_Devices[name].id,  -1*BT_Devices[name].rssi);
         }
     });
 }
-
-function onPause()
-{
-    StartBTScan();
-}
-
-function onResume()
-{
-    StopBTScan();
-}  
-
-function onReady()
-{
-    BTScanInit([{name: "Pebble Time LE DC6A", callback: function(name, rssi, id){
-        $("#BT_Devices").empty();
-        $("#BT_Devices").append('<p>ID: '+id+', rssi: '+ rssi+', name: '+ name+'</p>');
-    }}]);
-    StartBTScan();
-}
-
 
 function BTScanInit(bt_accepted_list)
 {
