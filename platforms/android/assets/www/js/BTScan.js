@@ -9,8 +9,9 @@ function AddDevice(device)
         BT_Devices[device.name] = {}
         BT_Devices[device.name].rssi = device.rssi;
         BT_Devices[device.name].id = device.id;
-        console.log(Object.keys(device.advertising));
+        console.log(device);
     }
+    console.log("AddDevice()");
 }
 
 function callbackAcceptedDeviced()
@@ -27,8 +28,10 @@ function callbackAcceptedDeviced()
             size = (100 - (size - 20))/ 100;
 
             item.callback(name, size, BT_Devices[name].id,  -1*BT_Devices[name].rssi);
+            console.log(name, size);
         }
     });
+    console.log("callbackAcceptedDeviced()");
 }
 
 function BTScan_Init(bt_accepted_list, refresh_rate)

@@ -33,13 +33,12 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+        <title>Peachy</title>
+        <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 
     </head>
     <body>
-        <div id="BT_Devices"><div>
+        <div id="BT_Devices" style="font-size:50px"><div>
         <script type="text/javascript" src="cordova.js"></script>
         
 
@@ -47,12 +46,12 @@
         <script>
             function onPause()
             {
-                BTScan_Start();
+                BTScan_Stop();
             }
 
             function onResume()
             {
-                BTScan_Stop();
+                BTScan_Start();
             }  
 
             function onReady()
@@ -63,8 +62,9 @@
 
             function deviceCallback(name, rssi, id, true_rssi_value)
             {
-                    $("#BT_Devices").empty();
-                    $("#BT_Devices").append('<p>ID: '+id+', rssi: '+ rssi+', name: '+ name+'</p>');
+                console.log("Ran");
+                $("#BT_Devices").empty();
+                $("#BT_Devices").append('<p>ID: '+id+', rssi: '+ rssi+', name: '+ name+'</p>');
             }
         </script>
         <script type="text/javascript" src="js/index.js"></script>
