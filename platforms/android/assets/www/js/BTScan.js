@@ -1,6 +1,7 @@
 var BT_Devices = {};
 var BT_ACCEPTED_LIST = [];
 var BT_INIT = false;
+var BT_ACCEPTED_DEVICE_REFRESH_RATE = 100;
 
 function AddDevice(device)
 {
@@ -17,37 +18,36 @@ function callbackAcceptedDeviced()
         var name = item.name;
         if (BT_Devices[name])
         {
-            var rssi = -1*BT_Devices[name].rssi;
-            
-            var size = rssi;
+            var size = -1*BT_Devices[name].rssi;
             if(size > 120)
                 size = 120;
             if(size < 20)
                 size = 20;
             size = (100 - (size - 20))/ 100;
-            console.log(size);
-            item.callback(name, -1*BT_Devices[name].rssi, BT_Devices[name].id);
+
+            item.callback(name, size, BT_Devices[name].id,  -1*BT_Devices[name].rssi);
         }
     });
 }
 
-function BTScanInit(bt_accepted_list)
+function BTScan_Init(bt_accepted_list, refresh_rate)
 {
     BT_ACCEPTED_LIST = bt_accepted_list;
     BT_INIT = true;
+    BT_ACCEPTED_DEVICE_REFRESH_RATE = refresh_rate | 100;
 }
 
-function StartBTScan()
+function BTScan_Start()
 {
     if(!BT_INIT){
         onBTFail("BTScanner Not Initilized");
         return;
     }
     ble.startScanWithOptions([], { reportDuplicates: true }, AddDevice, onBTFail);
-    setInterval(callbackAcceptedDeviced, 100);
+    setInterval(callbackAcceptedDeviced, BT_ACCEPTED_DEVICE_REFRESH_RATE);
 }
 
-function StopBTScan()
+function BTScan_Stop()
 {
     if(!BT_INIT){
         onBTFail("BTScanner Not Initilized");
