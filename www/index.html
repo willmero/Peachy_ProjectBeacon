@@ -58,7 +58,7 @@
             function onReady()
             {
                 BTScan_Init([{name: "Pebble Time LE DC6A", callback: deviceCallback}]);
-                StartBTScan();
+                BTScan_Start();
             }
 
             function deviceCallback(name, rssi, id, true_rssi_value)
