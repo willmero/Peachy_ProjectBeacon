@@ -1,6 +1,7 @@
 var BT_Devices = {};
 var BT_ACCEPTED_LIST = [];
 var BT_INIT = false;
+var BT_ACCEPTED_DEVICE_REFRESH_RATE = 100;
 
 function AddDevice(device)
 {
@@ -11,102 +12,42 @@ function AddDevice(device)
     }
 }
 
-// function printBTDevices()
-// {
-//     $("#BT_Devices").empty();
-//     var val = "";
-//     Object.keys(BT_Devices).forEach(function(dev){
-//         // $("#BT_Devices").append('<p>ID: '+dev+', rssi: '+ BT_Devices[dev].rssi+', name: '+ BT_Devices[dev].name+'</p>');        
-//         if(BT_Devices[dev].name == "Pebble Time LE DC6A")
-//             val += '<p>ID: '+dev+', rssi: '+ BT_Devices[dev].rssi+', name: '+ BT_Devices[dev].name+'</p>';
-//         // if(BT_Devices[dev].rssi > -90)
-//         // {
-//         //     val += '<p>ID: '+dev+', rssi: '+ BT_Devices[dev].rssi+', name: '+ BT_Devices[dev].name+'</p>';
-//         // }
-//         // else{
-//         //     // console.log('<p>ID: '+dev+', rssi: '+ BT_Devices[dev].rssi+', name: '+ BT_Devices[dev].name+'</p>');
-//         // }
-//     });
-//     $("#BT_Devices").append(val);
-// }
-
 function callbackAcceptedDeviced()
 {
     BT_ACCEPTED_LIST.forEach(function(item){
         var name = item.name;
         if (BT_Devices[name])
         {
+            var size = -1*BT_Devices[name].rssi;
+            if(size > 120)
+                size = 120;
+            if(size < 20)
+                size = 20;
+            size = (100 - (size - 20))/ 100;
 
-            ble.isConnected(item.id, function(isCon){
-                if(isCon)
-                {
-                    console.log("Is Connected");
-                    ble.readRSSI(item.id, function(rssi) {
-                        item.callback(name, rssi, BT_Devices[name].id);    
-                    }, onBTFail);
-                }
-                else
-                {
-                    
-                }                
-            }, function(val){
-                // console.log("NOT: ", val);
-                console.log("Isn't Connected");
-                ble.connect(item.id, function(){
-                    ble.readRSSI(item.id, function(rssi) {
-                        item.callback(name, rssi, BT_Devices[name].id);    
-                    }, onBTFail);
-                }, onBTFail)
-            });
-
-            // ble.connect(item.id, function(){
-            //         ble.readRSSI(item.id, function(rssi) {
-            //         item.callback(name, rssi, BT_Devices[name].id);    
-            //     }, onBTFail);
-            // }, onBTFail)
-            
-            item.callback(name, BT_Devices[name].rssi, BT_Devices[name].id);
+            item.callback(name, size, BT_Devices[name].id,  -1*BT_Devices[name].rssi);
         }
     });
 }
 
-function onPause()
-{
-    StartBTScan();
-}
-
-function onResume()
-{
-    StopBTScan();
-}  
-
-function onReady()
-{
-    BTScanInit([{name: "Pebble Time LE DC6A", callback: function(name, rssi, id){
-        $("#BT_Devices").empty();
-        $("#BT_Devices").append('<p>ID: '+id+', rssi: '+ rssi+', name: '+ name+'</p>');
-    }}]);
-    StartBTScan();
-}
-
-
-function BTScanInit(bt_accepted_list)
+function BTScan_Init(bt_accepted_list, refresh_rate)
 {
     BT_ACCEPTED_LIST = bt_accepted_list;
     BT_INIT = true;
+    BT_ACCEPTED_DEVICE_REFRESH_RATE = refresh_rate | 100;
 }
 
-function StartBTScan()
+function BTScan_Start()
 {
     if(!BT_INIT){
         onBTFail("BTScanner Not Initilized");
         return;
     }
     ble.startScanWithOptions([], { reportDuplicates: true }, AddDevice, onBTFail);
-    setInterval(callbackAcceptedDeviced, 100);
+    setInterval(callbackAcceptedDeviced, BT_ACCEPTED_DEVICE_REFRESH_RATE);
 }
 
-function StopBTScan()
+function BTScan_Stop()
 {
     if(!BT_INIT){
         onBTFail("BTScanner Not Initilized");

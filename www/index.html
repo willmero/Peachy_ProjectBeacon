@@ -44,6 +44,31 @@
         
 
         <script type="text/javascript" src="js/BTScan.js"></script>
+        <script>
+            function onPause()
+            {
+                BTScan_Start();
+            }
+
+            function onResume()
+            {
+                BTScan_Stop();
+            }  
+
+            function onReady()
+            {
+                BTScan_Init([{name: "Pebble Time LE DC6A", callback: deviceCallback}]);
+                StartBTScan();
+            }
+
+            function deviceCallback(name, rssi, id, true_rssi_value)
+            {
+                    $("#BT_Devices").empty();
+                    $("#BT_Devices").append('<p>ID: '+id+', rssi: '+ rssi+', name: '+ name+'</p>');
+            }
+        </script>
         <script type="text/javascript" src="js/index.js"></script>
+
+
     </body>
 </html>
