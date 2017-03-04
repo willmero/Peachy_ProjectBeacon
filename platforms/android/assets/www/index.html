@@ -57,11 +57,14 @@
 
             function onReady()
             {
-                BTScan_Init([{name: "Pebble Time LE DC6A", callback: function(name, rssi, id, true_rssi_value){
+                BTScan_Init([{name: "Pebble Time LE DC6A", callback: deviceCallback}]);
+                BTScan_Start();
+            }
+
+            function deviceCallback(name, rssi, id, true_rssi_value)
+            {
                     $("#BT_Devices").empty();
                     $("#BT_Devices").append('<p>ID: '+id+', rssi: '+ rssi+', name: '+ name+'</p>');
-                }}]);
-                StartBTScan();
             }
         </script>
         <script type="text/javascript" src="js/index.js"></script>
