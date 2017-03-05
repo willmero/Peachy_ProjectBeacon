@@ -122,8 +122,24 @@
                 <div class="pure-u-1-2 schedule"><div>No</div></div>
             </div>
         </div>
-        <div class="container"  id="directions_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;"></div>
-        <div class="container"  id="finished_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;"></div>
+        <div class="container" id="directions_container_left" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;">
+            <div class="directions_header">
+                <p>The DINING HALL is straight down to your <span>left</span></p>
+            </div>
+            <div class="directions_body">
+                <span class="fa fa-long-arrow-left fa-5x"></span>
+            </div>
+        </div>
+        <div class="container" id="directions_container_right" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;">
+            <div class="directions_header">
+                <p>Oops! Please turn around and take a <span>right</span> on the next corner.</p>
+            </div>
+            <div class="directions_body">
+                <span class="fa fa-long-arrow-right fa-5x"></span>
+            </div>
+        </div>
+
+        <div class="container" id="finished_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;"></div>
 
         <!-- <div id="BT_Devices" style="display: none;"></div> -->
         <!-- <table id="faces" class="faces-table"></table> -->
@@ -256,7 +272,7 @@
                 $("#schedule-button-yes").click(function() {
                     $("#schedule-button-yes").find(".selectable").css('background-color', 'green');
                     $("#schedule_container").hide(500);
-                    $("#directions_container").show(500);
+                    $("#directions_container_left").show(500);
                 });
                 console.log("Added Click");
             }
