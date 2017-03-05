@@ -62,18 +62,15 @@
             <div class="directions_header">
                 <p>Hi <span class="text_highlight">Thomas</span>,</p>
                 <p>Welocome to the Living Room</p>
-                <div class="pure-u-1-2 option">
+                <div class="pure-u-1-2 option" style="disply:none">
                         <div class="option-button selectable">
                           <span>Help</span>
                         </div>
                     </div>
             </div>
-            <div class="directions_body">
-                <span class="fa fa-long-arrow-left fa-5x"></span>
-            </div>
         </div>
 
-        <div class="container" id="living_room_containter">
+        <div class="container" id="living_room_containter" style="display: block;">
             <div class="options-header" style="width: 100%; height: 10%;">In the <span class="text_highlight">Living Room</span>, you usually prefer to:</div>
             <div class="options-body" style="width: 100%; height: 90%;">
                 <div class="option-row pure-g">
@@ -117,16 +114,18 @@
                 <p>Your next Medication is to be taken at <span class="text-highlight">3:30pm</span>.</p>
                 </br>
                 <p>That will be in 20 minutes</p>
+
                 <div id="medication_container_button_ok" class="pure-u-1-2 option">
-                    <div class="option-button selectable">
-                        <span class="fa fa-calender"></span><span>OK</span>
+                    <div class="option-button selectable ok">
+                        <!--span class="fa fa-calender"></span-->
+                        OK
                     </div>
                 </div>
             </div>
         </div>
 
 
-        <div class="container"  id="lunch_time_container" >
+        <div class="container"  id="lunch_time_container" style="">
             <div class="schedule-header" style="width: 100%; height: 70%;">
                 <p>Looks like it's <span class="text-highlight">almost lunchtime</span>.</p>
                 <p>Would you like to head over to the dinning hall?</p>
@@ -153,7 +152,7 @@
             </div>
         </div>
 
-
+        
         <div class="container" id="directions_container_left" >
             <div class="directions_header">
                 <p>The DINING HALL is straight down to your <span>left</span></p>
@@ -205,6 +204,7 @@
             function bubbledestroy(name)
             {
                 var id = name.replace(new RegExp(" ", 'g'), "_");
+                $("#faces").find("#" + id).parent().fadeOut();
                 $("#faces").find("#" + id).parent().remove();
             }
 
@@ -250,13 +250,13 @@
                         // update size based on current size
                         if($(window).width() > $(window).height()){
                             // device is in landscape
-                             $("#faces").find("#" + id).animate({ width: ($(thisItem).height() * weight)/2 + "px", height: ($(thisItem).height() * weight)/2 + "px"}, {
+                             $("#faces").find("#" + id).animate({ width: (($(thisItem).height() * weight)/2)+100 + "px", height: (($(thisItem).height() * weight)/2)+100 + "px"}, {
                                 duration: 700,
                                 easing: 'easeOutElastic'
                             });
                         } else {
                             // device is vertical
-                            $("#faces").find("#" + id).animate({ width: ($(window).width() * weight)/2 + "px", height: ($(window).width() * weight)/2 + "px"}, {
+                            $("#faces").find("#" + id).animate({ width: (($(thisItem).height() * weight)/2)+100 + "px", height: (($(thisItem).height() * weight)/2)+100 + "px"}, {
                                 duration: 700,
                                 easing: 'easeOutElastic'
                             });
@@ -305,7 +305,6 @@
                     $(".container").css("background-size", "cover");
                 });
                 $("#option_button_meds").click(function() {
-                    console.log("click");
                     $("#option_button_meds").find(".selectable").css('background-color', 'green');
                     $("#living_room_containter").hide(500);
                     $("#authentication_container").show(500);
@@ -328,6 +327,20 @@
                 console.log("Added Click");
             }
             $(".container").css("background-image", "url('img/background.jpg')");
+           //  var temp = true;
+           //  var id = $(this).attr("id").replace(new RegExp("_", 'g'), " ");
+           // if(temp){
+           //      BTScan_Auth(id, authcallback);
+           //      temp = false;
+           //  }
+           //  function authcallback(auth)
+           //  {
+           //      if(auth)
+           //          //good
+           //      else
+           //          //bad
+           //  }
+
             $(".container").css("background-size", "cover");
             AddClick();
         </script>
