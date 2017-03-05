@@ -32,8 +32,8 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/pure-min.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Peachy</title>
         <style>
@@ -173,7 +173,10 @@
             </div>
         </div>
 
-        <div class="container" id="finished_container" ></div>
+        <div class="container" id="finished_container" >
+
+
+        </div>
 
         <!-- <div id="BT_Devices" style="display: none;"></div> -->
         <!-- <table id="faces" class="faces-table"></table> -->
@@ -298,7 +301,7 @@
         <script>
             function AddClick() {
                 $(".face-container").click(function() {
-                    console.log("Clicked");    
+                    console.log("Clicked");
                     $("#faces").hide(500);
                     $("#living_room_containter").show(500);
                     $(".container").css("background-size", "cover");
