@@ -252,13 +252,13 @@
                         // update size based on current size
                         if($(window).width() > $(window).height()){
                             // device is in landscape
-                             $("#faces").find("#" + id).animate({ width: ($(thisItem).height() * weight)/2 + "px", height: ($(thisItem).height() * weight)/2 + "px"}, {
+                             $("#faces").find("#" + id).animate({ width: (($(thisItem).height() * weight)/2)+100 + "px", height: (($(thisItem).height() * weight)/2)+100 + "px"}, {
                                 duration: 700,
                                 easing: 'easeOutElastic'
                             });
                         } else {
                             // device is vertical
-                            $("#faces").find("#" + id).animate({ width: ($(window).width() * weight)/2 + "px", height: ($(window).width() * weight)/2 + "px"}, {
+                            $("#faces").find("#" + id).animate({ width: (($(thisItem).height() * weight)/2)+100 + "px", height: (($(thisItem).height() * weight)/2)+100 + "px"}, {
                                 duration: 700,
                                 easing: 'easeOutElastic'
                             });
