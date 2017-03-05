@@ -86,7 +86,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		Pd4SjJnwgA0YrtdfOKAuFXWpT6c=
+		6QmUJ7q2CrBowGsIX4wd1ei5T9Y=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -94,7 +94,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		oASmP4ADazfmJEgsen4tom5Nyow=
+		twGqbZzq82u76sSc4JJ+kWh1/2U=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -158,7 +158,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		co1n9Xb7Lm2Qb2sZrkbB80CI5cY=
+		yi6zMJuxdxd7zEIFCPJtIRFtTZA=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -210,7 +210,7 @@
 		</data>
 		<key>www/index.html</key>
 		<data>
-		whlyvWmm0p68WthuqkOYNRrIURo=
+		SVKa1stZmurZ5nciWA4ZdWlPVYg=
 		</data>
 		<key>www/js/BTScan.js</key>
 		<data>
@@ -459,11 +459,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Pd4SjJnwgA0YrtdfOKAuFXWpT6c=
+			6QmUJ7q2CrBowGsIX4wd1ei5T9Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			kzW7IHp0zGrjJJ33CJ5zN+i6cSCyMVS0vgmkyTx8QTE=
+			KOQSytDAKP8FqJGq7FlHYsaUuuxwRITPGJ2V1p+E3+o=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -481,11 +481,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			oASmP4ADazfmJEgsen4tom5Nyow=
+			twGqbZzq82u76sSc4JJ+kWh1/2U=
 			</data>
 			<key>hash2</key>
 			<data>
-			TP/+9FDlktFQNtoTGhrYShYmywVecT9lm8spWriCGzg=
+			spXB9Ydfl70sWLGjozyvZSt/FZUjpjsYctzwzl07zac=
 			</data>
 		</dict>
 		<key>LaunchImage-568h@2x.png</key>
@@ -646,11 +646,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			co1n9Xb7Lm2Qb2sZrkbB80CI5cY=
+			yi6zMJuxdxd7zEIFCPJtIRFtTZA=
 			</data>
 			<key>hash2</key>
 			<data>
-			GPv7XPcgtt8RxAmYZ0KJwd3k3sKeeRQCdw6ZuS5a3Xk=
+			hIcd9L/yqEpS9F62hsOjQTK/FsVCrb0XGKdjz5LG4/w=
 			</data>
 		</dict>
 		<key>archived-expanded-entitlements.xcent</key>
@@ -778,11 +778,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			whlyvWmm0p68WthuqkOYNRrIURo=
+			SVKa1stZmurZ5nciWA4ZdWlPVYg=
 			</data>
 			<key>hash2</key>
 			<data>
-			QWBcFOM6FvhyKVWzOTWTgh33JlC7dn97rZ6FAEu15Tg=
+			fxopRqmycXeewAM+Bb2L74wwsTx8+u/MtmN+fK5+cyQ=
 			</data>
 		</dict>
 		<key>www/js/BTScan.js</key>
