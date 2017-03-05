@@ -85,36 +85,43 @@ function BTScan_Stop()
     }, onBTFail);
 }
 
-// function BTScan_Auth(name, authCallback)
-// {
-//     var accepted = BT_ACCEPTED_LIST.find((val) => {return val.name === name});
-//     if(accepted){
+function BTScan_Auth(name, authCallback)
+{
+    var accepted = BT_ACCEPTED_LIST.find((val) => {return val.name === name});
+    if(accepted){
         
-//         var auth = BT_AUTH_DEVICES[name];
-//         if(auth ){
-//             if(auth === 3)
-//             {
-//                 delete BT_AUTH_DEVICES[name];
-//                 authCallback(true);
-//             }
-//             else
-//             {
-//                 if()
-//                 BT_AUTH_DEVICES[name]++;
-//                 setTimeout(BTScan_Auth, BT_ACCEPTED_DEVICE_REFRESH_RATE, name, authCallback);
-//             }
-//         }
-//         else
-//         {
-//            BT_AUTH_DEVICES[name] = 0; 
-//            setTimeout(BTScan_Auth, BT_ACCEPTED_DEVICE_REFRESH_RATE, name, authCallback);
-//         }
-//     }
-//     else
-//     {
-//         authCallback(false);
-//     }
-// }
+        var auth = BT_AUTH_DEVICES[name];
+        if(auth){
+            if(auth === 2)
+            {
+                delete BT_AUTH_DEVICES[name];
+                authCallback(true);
+                return;
+            }
+            else
+            {
+                if(BT_Devices[name].rssi > -35)
+                {
+                    BT_AUTH_DEVICES[name]++;
+                }
+                else
+                {
+                    BT_AUTH_DEVICES[name] = 1;
+                }
+                setTimeout(BTScan_Auth, BT_ACCEPTED_DEVICE_REFRESH_RATE, name, authCallback);
+            }
+        }
+        else
+        {
+           BT_AUTH_DEVICES[name] = 1; 
+           setTimeout(BTScan_Auth, BT_ACCEPTED_DEVICE_REFRESH_RATE, name, authCallback);
+        }
+    }
+    else
+    {
+        authCallback(false);
+    }
+}
 
 
 function onBTFail(error)
