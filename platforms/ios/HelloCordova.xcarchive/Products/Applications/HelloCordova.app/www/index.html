@@ -39,20 +39,30 @@
                 border-radius: 50%;
                 color: white;
                 background: red;
+                background-size: cover;
+                max-height: 100%;
+                max-width: 100%;
+                display: none;
+            }
+            .faces-table {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
             }
         </style>
         <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     </head>
     <body>
-        <div id="BT_Devices"></div>
-        <div id="faces_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px;"></div>
-        <script type="text/javascript" src="cordova.js"></script>
+        <div id="BT_Devices" style="display: none;"></div>
+        <table id="faces" class="faces-table"></table>
         
-
+        <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/BTScan.js"></script>
         <script>
 
-            var userList = [["D75FEC3E-4783-47C3-8386-D8D54A52343F", "elder.jpg"], ["DD43F844-3F00-462A-910F-7D9C3FAFB9B0", "elder2.jpg"]] 
+            var userList = [["Pebble_Time_LE_213F", "elder.jpg"], ["Pebble_Time_LE_DC6A", "elder2.jpg"]] 
 
             function onPause()
             {
@@ -66,20 +76,27 @@
 
             function onReady()
             {
-                BTScan_Init([{name: "Pebble Time LE 213F", callback: deviceCallback}, {name: "Pebble Time LE DC6A", callback: deviceCallback}]);
+                //BTScan_Init([{name: "Pebble Time LE 213F", callback: deviceCallback, destroyed: bubbledestroy}, {name: "Pebble Time LE DC6A", callback: deviceCallback, destroyed: bubbledestroy}], 1500);
+                BTScan_Init([{name: "Pebble Time LE 213F", callback: deviceCallback, destroyed: bubbledestroy}, {name: "Pebble Time LE DC6A", callback: deviceCallback, destroyed: bubbledestroy}], 1500);
                 BTScan_Start();
             }
 
-            function deviceCallback(name, rssi, id, true_rssi_value)
+            function bubbledestroy(name)
             {
-                if($("#BT_Devices").find("#" + id).length > 0){
-                    $("#BT_Devices").find("#" + id).html('ID: '+id+', rssi: '+ rssi+', name: '+ name + ', true rssi: ' + true_rssi_value);
+                var id = name.replace(new RegExp(" ", 'g'), "_");
+                $("#faces").find("#" + id).parent().remove();
+            }
+
+            function deviceCallback(name, bucketID, id, true_rssi_value)
+            {
+                var ID = name.replace(new RegExp(" ", 'g'), "_");
+                if($("#BT_Devices").find("#" + ID).length > 0){
+                    $("#BT_Devices").find("#" + ID).html('ID: '+id+', bucketID: '+ bucketID+', name: '+ name + ', true rssi: ' + true_rssi_value);
                 } else {
-                    $("#BT_Devices").append('<p id="' + id + '">ID: '+id+', rssi: '+ rssi+', name: '+ name+'</p>');
+                    $("#BT_Devices").append('<p class="btdevice" id="' + ID + '">ID: '+id+', bucketID: '+ bucketID+', name: '+ name+'</p>');
                 }
 
-                createFaceBubble(id, rssi);
-                
+                createFaceBubble(ID, bucketID);                
             }
 
             function getUserPhoto(id){
@@ -90,15 +107,64 @@
                 }
             }
 
-            function createFaceBubble(id, rssi){
+            function createFaceBubble(id, bucketID){
                 // append to the faces
-                if($("#faces_container").find("#" + id).length > 0){
+                var weight;
+                if(bucketID == 1){
+                    weight = 1;
+                } else if(bucketID == 2){
+                    weight = 0.65;
+                } else if(bucketID == 3){
+                    weight = 0.35;
+                } else if(bucketID == 4){
+                    weight = 0.20;
+                }
+
+                if($("#faces").find("#" + id).length > 0){
                     // update size based on current size
-                    $("#faces_container").find("#" + id).css("width", ($(window).width() * rssi));
-                    $("#faces_container").find("#" + id).css("height", ($(window).width() * rssi));
+                    if($(window).width() > $(window).height()){
+                        // device is in landscape
+                         $("#faces").find("#" + id).animate({ width: ($(window).height() * weight) + "px", height: ($(window).height() * weight) + "px"}, {
+                            duration: 700,
+                            easing: 'easeOutElastic'
+                        });
+                    } else {
+                        // device is vertical
+                        $("#faces").find("#" + id).animate({ width: ($(window).width() * weight) + "px", height: ($(window).width() * weight) + "px"}, {
+                            duration: 700,
+                            easing: 'easeOutElastic'
+                        });
+                    }
+                    
                 } else {
-                    $("#faces_container").append('<div class="face-container" id="' + id +'" style="width:' + ($(window).width() * rssi) + 'px; height: ' + ($(window).width() * rssi) + 'px;">' + name + '</div>');
-                    $("#faces_container").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                    if($(window).width() > $(window).height()){
+                        // device is in landscape
+                        if($("#faces").find("tr").length > 0){
+                            // already a row
+                            $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).height() * weight) + 'px; height: ' + ($(window).height() * weight) + 'px;">' + name + '</div></td></td>');
+                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                            $("#faces").find("#" + id).fadeIn();
+                        } else {
+                            // no row, add it
+                            $("#faces").append('<tr><td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).height() * weight) + 'px; height: ' + ($(window).height() * weight) + 'px;">' + name + '</div></td></tr>');
+                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                            $("#faces").find("#" + id).fadeIn();
+                        }
+                    } else {
+                        // device is vertical
+                        if($("#faces").find("tr").length > 0){
+                            // already a row
+                            $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).width() * weight) + 'px; height: ' + ($(window).width() * weight) + 'px;">' + name + '</div></td></td>');
+                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                            $("#faces").find("#" + id).fadeIn();
+                        } else {
+                            // no row, add it
+                            $("#faces").append('<tr><td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).width() * weight) + 'px; height: ' + ($(window).width() * weight) + 'px;">' + name + '</div></td></tr>');
+                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                            $("#faces").find("#" + id).fadeIn();
+                        }
+                    }
+                    
                 }
             }
         </script>
