@@ -57,9 +57,7 @@
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     </head>
     <body>
-
         <table id="faces" style="width: 100%; height: 100%; position: absolute; top: 0; background-image: url('img/background.jpg'); background-size: cover;"></table>
-
         <div class="container" id="friendly_screen_living_room">
             <div class="directions_header">
                 <p>Hi <span class="text_highlight">Thomas</span>,</p>
@@ -75,20 +73,18 @@
             </div>
         </div>
 
-
-
         <div class="container" id="living_room_containter">
             <div class="options-header" style="width: 100%; height: 10%;">In the <span class="text_highlight">Living Room</span>, you usually prefer to:</div>
             <div class="options-body" style="width: 100%; height: 90%;">
                 <div class="option-row pure-g">
-                    <div id="option-button-schedule" class="pure-u-1-2 option option-full">
+                    <div class="pure-u-1-2 option option-full">
                         <div class="option-button selectable">
                             <span class="fa fa-talk"></span><span> Talk to a caregiver</span>
                         </div>
                     </div>
                 </div>
                 <div class="option-row pure-g">
-                    <div class="pure-u-1-2 option option-full ">
+                    <div id="option_button_meds" class="pure-u-1-2 option option-full ">
                         <div class="option-button selectable">
                             <span class="fa fa-medkit"></span><span> Take medications</span>
                         </div>
@@ -121,7 +117,7 @@
                 <p>Your next Medication is to be taken at <span class="text-highlight">3:30pm</span>.</p>
                 </br>
                 <p>That will be in 20 minutes</p>
-                <div class="pure-u-1-2 option">
+                <div id="medication_container_button_ok" class="pure-u-1-2 option">
                     <div class="option-button selectable">
                         <span class="fa fa-calender"></span><span>OK</span>
                     </div>
@@ -142,7 +138,9 @@
         </div>
 
 
-        
+        <div class="container" id="authentication_container">
+            <img class="auth_img" src="img/ProjectBeacon-3ab.jpg"></img>
+        </div>
 
         <div class="container"  id="schedule_container" >
             <div class="schedule-header" style="width: 100%; height: 70%;">
@@ -306,11 +304,20 @@
                     $("#living_room_containter").show(500);
                     $(".container").css("background-size", "cover");
                 });
-                $("#option-button-schedule").click(function() {
-                    $("#option-button-schedule").find(".selectable").css('background-color', 'green');
+                $("#option_button_meds").click(function() {
+                    console.log("click");
+                    $("#option_button_meds").find(".selectable").css('background-color', 'green');
                     $("#living_room_containter").hide(500);
-                    $("#schedule_container").show(500);
+                    $("#authentication_container").show(500);
                     $(".container").css("background-size", "cover");
+                });
+                $("#authentication_container").click(function() {
+                    $("#authentication_container").hide(500);
+                    $("#medication_container").show(500);
+                });
+                $("#medication_container_button_ok").click(function() {
+                    $("#medication_container").hide(500);
+                    $("#living_room_containter").show(500);
                 });
                 $("#schedule-button-yes").click(function() {
                     $("#schedule-button-yes").find(".selectable").css('background-color', 'green');
@@ -322,6 +329,7 @@
             }
             $(".container").css("background-image", "url('img/background.jpg')");
             $(".container").css("background-size", "cover");
+            AddClick();
         </script>
     </body>
 </html>
