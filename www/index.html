@@ -57,9 +57,9 @@
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     </head>
     <body>
-        <div id="BT_Devices"></div>
-        <div id="faces_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: block"></div>
-        <div id="options_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none;">
+        <!-- <div id="BT_Devices"></div> -->
+        <div class="container" id="faces" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: block"></div>
+        <div class="container" id="options_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none;">
             <div class="options-header" style="width: 100%; height: 10%;">Based on your previous selections...</div>
             <div class="options-body" style="width: 100%; height: 90%;">
                 <div class="option-row pure-g">
@@ -112,7 +112,7 @@
                 </div>
             </div>
         </div>
-        <div id="schedule_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;">
+        <div class="container"  id="schedule_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;">
             <div class="schedule-header" style="width: 100%; height: 70%;">
                 <p>Looks like it's <span>almost lunchtime</span>.</p>
                 <p>Would you like to head over to the dinning hall?</p>
@@ -122,11 +122,11 @@
                 <div class="pure-u-1-2 schedule"><div>No</div></div>
             </div>
         </div>
-        <div id="directions_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;"></div>
-        <div id="finished_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;"></div>
+        <div class="container"  id="directions_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;"></div>
+        <div class="container"  id="finished_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;"></div>
 
-        <div id="BT_Devices" style="display: none;"></div>
-        <table id="faces" class="faces-table"></table>
+        <!-- <div id="BT_Devices" style="display: none;"></div> -->
+        <!-- <table id="faces" class="faces-table"></table> -->
 
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/BTScan.js"></script>
@@ -163,7 +163,7 @@
                 if($("#BT_Devices").find("#" + ID).length > 0){
                     $("#BT_Devices").find("#" + ID).html('ID: '+id+', bucketID: '+ bucketID+', name: '+ name + ', true rssi: ' + true_rssi_value);
                 } else {
-                    $("#BT_Devices").append('<p class="btdevice" id="' + ID + '">ID: '+id+', bucketID: '+ bucketID+', name: '+ name+'</p>');
+                    // $("#BT_Devices").append('<p class="btdevice" id="' + ID + '">ID: '+id+', bucketID: '+ bucketID+', name: '+ name+'</p>');
                 }
 
                 createFaceBubble(ID, bucketID);
@@ -234,16 +234,17 @@
                             $("#faces").find("#" + id).fadeIn();
                         }
                     }
-                    
+                    AddClick();
                 }
             }
 
         </script>
         <script type="text/javascript" src="js/index.js"></script>
         <script>
-            (function() {
-                $("#faces_container").click(function() {
-                    $("#faces_container").hide(500);
+            function AddClick() {
+                $("#faces").click(function() {
+                    console.log("Clicked");    
+                    $("#faces").hide(500);
                     $("#options_container").show(500);
                 });
                 $("#option-button-schedule").click(function() {
@@ -256,7 +257,8 @@
                     $("#schedule_container").hide(500);
                     $("#directions_container").show(500);
                 });
-            })();
+                console.log("Added Click");
+            }
         </script>
     </body>
 </html>

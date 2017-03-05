@@ -176,3 +176,7 @@ h1 {
     border-radius: 15px;
     line-height: 2.5em;
 }
+
+ .container {
+    background-color: black;
+ }

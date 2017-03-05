@@ -32,6 +32,8 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/pure-min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Peachy</title>
         <style>
@@ -39,20 +41,98 @@
                 border-radius: 50%;
                 color: white;
                 background: red;
+                background-size: cover;
+                max-height: 100%;
+                max-width: 100%;
+                display: none;
+            }
+            .faces-table {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
             }
         </style>
         <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     </head>
     <body>
-        <div id="BT_Devices"></div>
-        <div id="faces_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px;"></div>
-        <script type="text/javascript" src="cordova.js"></script>
-        
+        <!-- <div id="BT_Devices"></div> -->
+        <div class="container" id="faces" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: block"></div>
+        <div class="container" id="options_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none;">
+            <div class="options-header" style="width: 100%; height: 10%;">Based on your previous selections...</div>
+            <div class="options-body" style="width: 100%; height: 90%;">
+                <div class="option-row pure-g">
+                    <div id="option-button-schedule" class="pure-u-1-2 option">
+                        <div class="option-button selectable">
+                            <span class="fa fa-calendar"></span><span> Schedule</span>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-2 option">
+                        <div class="option-button selectable">
+                            <span class="fa fa-map-marker"></span><span> Location</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-row pure-g">
+                    <div class="pure-u-1-2 option">
+                        <div>
+                            <span class="fa fa-medkit"></span><span> Medications</span>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-2 option">
+                        <div>
+                            <span class="fa fa-question-circle-o"></span><span> Lost Item</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-row pure-g">
+                    <div class="pure-u-1-2 option">
+                        <div>
+                            <span class="fa fa-gamepad"></span><span> Acitvities</span>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-2 option">
+                        <div>
+                            <span class="fa fa-commenting-o"></span><span> Reminders</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-row pure-g">
+                    <div class="pure-u-1-2 option">
+                        <div>
+                            <span class="fa fa-search"></span><span> Browse Apps</span>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-2 option">
+                        <div>
+                            <span class="fa fa-warning"></span><span> I need help!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container"  id="schedule_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;">
+            <div class="schedule-header" style="width: 100%; height: 70%;">
+                <p>Looks like it's <span>almost lunchtime</span>.</p>
+                <p>Would you like to head over to the dinning hall?</p>
+            </div>
+            <div class="schedule-body pure-g" style="width: 100%; height: 30%;">
+                <div id="schedule-button-yes" class="pure-u-1-2 schedule"><div class="selectable">Yes</div></div>
+                <div class="pure-u-1-2 schedule"><div>No</div></div>
+            </div>
+        </div>
+        <div class="container"  id="directions_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;"></div>
+        <div class="container"  id="finished_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;"></div>
 
+        <!-- <div id="BT_Devices" style="display: none;"></div> -->
+        <!-- <table id="faces" class="faces-table"></table> -->
+
+        <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/BTScan.js"></script>
         <script>
 
-            var userList = [["D75FEC3E-4783-47C3-8386-D8D54A52343F", "elder.jpg"], ["DD43F844-3F00-462A-910F-7D9C3FAFB9B0", "elder2.jpg"]] 
+            var userList = [["Pebble_Time_LE_213F", "elder.jpg"], ["Pebble_Time_LE_DC6A", "elder2.jpg"]] 
 
             function onPause()
             {
@@ -62,24 +142,31 @@
             function onResume()
             {
                 BTScan_Start();
-            }  
+            }
 
             function onReady()
             {
-                BTScan_Init([{name: "Pebble Time LE 213F", callback: deviceCallback}, {name: "Pebble Time LE DC6A", callback: deviceCallback}], 2500);
+                //BTScan_Init([{name: "Pebble Time LE 213F", callback: deviceCallback, destroyed: bubbledestroy}, {name: "Pebble Time LE DC6A", callback: deviceCallback, destroyed: bubbledestroy}], 1500);
+                BTScan_Init([{name: "Pebble Time LE 213F", callback: deviceCallback, destroyed: bubbledestroy}, {name: "Pebble Time LE DC6A", callback: deviceCallback, destroyed: bubbledestroy}], 1500);
                 BTScan_Start();
+            }
+
+            function bubbledestroy(name)
+            {
+                var id = name.replace(new RegExp(" ", 'g'), "_");
+                $("#faces").find("#" + id).parent().remove();
             }
 
             function deviceCallback(name, bucketID, id, true_rssi_value)
             {
-                var ID = name.replace(new RegExp(" ", 'g'), "_");
+               var ID = name.replace(new RegExp(" ", 'g'), "_");
                 if($("#BT_Devices").find("#" + ID).length > 0){
                     $("#BT_Devices").find("#" + ID).html('ID: '+id+', bucketID: '+ bucketID+', name: '+ name + ', true rssi: ' + true_rssi_value);
                 } else {
-                    $("#BT_Devices").append('<p id="' + ID + '">ID: '+id+', bucketID: '+ bucketID+', name: '+ name+'</p>');
+                    // $("#BT_Devices").append('<p class="btdevice" id="' + ID + '">ID: '+id+', bucketID: '+ bucketID+', name: '+ name+'</p>');
                 }
 
-                createFaceBubble(ID, bucketID);                
+                createFaceBubble(ID, bucketID);
             }
 
             function getUserPhoto(id){
@@ -92,18 +179,86 @@
 
             function createFaceBubble(id, bucketID){
                 // append to the faces
-                if($("#faces_container").find("#" + id).length > 0){
+                var weight;
+                if(bucketID == 1){
+                    weight = 1;
+                } else if(bucketID == 2){
+                    weight = 0.65;
+                } else if(bucketID == 3){
+                    weight = 0.35;
+                } else if(bucketID == 4){
+                    weight = 0.20;
+                }
+
+                if($("#faces").find("#" + id).length > 0){
                     // update size based on current size
-                    $("#faces_container").find("#" + id).css("width", ($(window).width() / bucketID));
-                    $("#faces_container").find("#" + id).css("height", ($(window).width() / bucketID));
+                    if($(window).width() > $(window).height()){
+                        // device is in landscape
+                         $("#faces").find("#" + id).animate({ width: ($(window).height() * weight) + "px", height: ($(window).height() * weight) + "px"}, {
+                            duration: 700,
+                            easing: 'easeOutElastic'
+                        });
+                    } else {
+                        // device is vertical
+                        $("#faces").find("#" + id).animate({ width: ($(window).width() * weight) + "px", height: ($(window).width() * weight) + "px"}, {
+                            duration: 700,
+                            easing: 'easeOutElastic'
+                        });
+                    }
+                    
                 } else {
-                    $("#faces_container").append('<div class="face-container" id="' + id +'" style="width:' + ($(window).width() / bucketID) + 'px; height: ' + ($(window).width() / bucketID) + 'px;">' + name + '</div>');
-                    $("#faces_container").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                    if($(window).width() > $(window).height()){
+                        // device is in landscape
+                        if($("#faces").find("tr").length > 0){
+                            // already a row
+                            $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).height() * weight) + 'px; height: ' + ($(window).height() * weight) + 'px;">' + name + '</div></td></td>');
+                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                            $("#faces").find("#" + id).fadeIn();
+                        } else {
+                            // no row, add it
+                            $("#faces").append('<tr><td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).height() * weight) + 'px; height: ' + ($(window).height() * weight) + 'px;">' + name + '</div></td></tr>');
+                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                            $("#faces").find("#" + id).fadeIn();
+                        }
+                    } else {
+                        // device is vertical
+                        if($("#faces").find("tr").length > 0){
+                            // already a row
+                            $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).width() * weight) + 'px; height: ' + ($(window).width() * weight) + 'px;">' + name + '</div></td></td>');
+                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                            $("#faces").find("#" + id).fadeIn();
+                        } else {
+                            // no row, add it
+                            $("#faces").append('<tr><td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).width() * weight) + 'px; height: ' + ($(window).width() * weight) + 'px;">' + name + '</div></td></tr>');
+                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                            $("#faces").find("#" + id).fadeIn();
+                        }
+                    }
+                    AddClick();
                 }
             }
+
         </script>
         <script type="text/javascript" src="js/index.js"></script>
-
-
+        <script>
+            function AddClick() {
+                $("#faces").click(function() {
+                    console.log("Clicked");    
+                    $("#faces").hide(500);
+                    $("#options_container").show(500);
+                });
+                $("#option-button-schedule").click(function() {
+                    $("#option-button-schedule").find(".selectable").css('background-color', 'green');
+                    $("#options_container").hide(500);
+                    $("#schedule_container").show(500);
+                });
+                $("#schedule-button-yes").click(function() {
+                    $("#schedule-button-yes").find(".selectable").css('background-color', 'green');
+                    $("#schedule_container").hide(500);
+                    $("#directions_container").show(500);
+                });
+                console.log("Added Click");
+            }
+        </script>
     </body>
 </html>
