@@ -6,11 +6,30 @@ var BT_ACCEPTED_DEVICE_REFRESH_RATE = 100;
 function AddDevice(device)
 {
     if(device.name){
-        BT_Devices[device.name] = {}
-        BT_Devices[device.name].rssi = device.rssi;
-        BT_Devices[device.name].id = device.id;
-        console.log(device);
+        var dev = {};
+        dev.rssi = device.rssi;
+        dev.id = device.id;
+        if(!BT_Devices[device.name])
+            setTimeout(removeDevice, 8 * BT_ACCEPTED_DEVICE_REFRESH_RATE, device.name, dev);   
+        BT_Devices[device.name] = dev;
     }
+}
+
+function removeDevice(name, device)
+{
+    if(BT_Devices[name].rssi == device.rssi)
+    {
+        delete BT_Devices[name];
+        var accepted = BT_ACCEPTED_LIST.find((val) => {return val.name === name});
+        if(accepted)
+            accepted.destroyed(name);
+        return;
+    }
+    else
+    {
+        setTimeout(removeDevice, 8 * BT_ACCEPTED_DEVICE_REFRESH_RATE, name, BT_Devices[name]);
+    }
+
 }
 
 function callbackAcceptedDeviced()
@@ -19,14 +38,20 @@ function callbackAcceptedDeviced()
         var name = item.name;
         if (BT_Devices[name])
         {
-            var size = -1*BT_Devices[name].rssi;
-            if(size > 120)
-                size = 120;
-            if(size < 20)
-                size = 20;
-            size = (100 - (size - 20))/ 100;
+            var bucketSize = 4;            
+            var size = BT_Devices[name].rssi;
+            if(size > 1)
+                return
+            if(size  > -85)
+                bucketSize = 4
+            if(size  > -80)
+                bucketSize = 3;
+            if(size > -75)
+                bucketSize = 2;
+            if(size > -55)
+                bucketSize = 1;
 
-            item.callback(name, size, BT_Devices[name].id,  -1*BT_Devices[name].rssi);
+            item.callback(name, bucketSize, BT_Devices[name].id,  BT_Devices[name].rssi);            
         }
     });
 }

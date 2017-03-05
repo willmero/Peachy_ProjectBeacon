@@ -86,7 +86,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		0KRkzGHhQAe0FZ18W/AFYCawQq0=
+		Pd4SjJnwgA0YrtdfOKAuFXWpT6c=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -94,7 +94,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		ovHkXVhNky+671LEBfxjlHExOao=
+		oASmP4ADazfmJEgsen4tom5Nyow=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -158,7 +158,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		PxwUvTe6SScjwAbFvoMjd7WqQZk=
+		co1n9Xb7Lm2Qb2sZrkbB80CI5cY=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -210,11 +210,11 @@
 		</data>
 		<key>www/index.html</key>
 		<data>
-		TcbyFd24myFk8RftIcsPsr5FIXw=
+		whlyvWmm0p68WthuqkOYNRrIURo=
 		</data>
 		<key>www/js/BTScan.js</key>
 		<data>
-		1Qgyg0YsNucHNFy0PdOeEc0Vk3g=
+		3lHC21oCzsv1F8cTwgFQKSQQlyk=
 		</data>
 		<key>www/js/index.js</key>
 		<data>
@@ -223,6 +223,10 @@
 		<key>www/js/jquery-3.1.1.min.js</key>
 		<data>
 		9kem033EygVc7Tz2S7wfSQBwrLo=
+		</data>
+		<key>www/js/jquery-ui.min.js</key>
+		<data>
+		Q6p1Be7FeYidJYUhtjvB97eBp9g=
 		</data>
 		<key>www/plugins/cordova-plugin-ble-central/www/ble.js</key>
 		<data>
@@ -455,11 +459,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0KRkzGHhQAe0FZ18W/AFYCawQq0=
+			Pd4SjJnwgA0YrtdfOKAuFXWpT6c=
 			</data>
 			<key>hash2</key>
 			<data>
-			lfF5TTk2zGsoPJ3RGdmUxSYIR0dL7C406kfIil65HXM=
+			kzW7IHp0zGrjJJ33CJ5zN+i6cSCyMVS0vgmkyTx8QTE=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -477,11 +481,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ovHkXVhNky+671LEBfxjlHExOao=
+			oASmP4ADazfmJEgsen4tom5Nyow=
 			</data>
 			<key>hash2</key>
 			<data>
-			otX9vczWjmRiqQSmEBrd6qwsKtJXMqPx7G/smmgTb38=
+			TP/+9FDlktFQNtoTGhrYShYmywVecT9lm8spWriCGzg=
 			</data>
 		</dict>
 		<key>LaunchImage-568h@2x.png</key>
@@ -642,11 +646,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PxwUvTe6SScjwAbFvoMjd7WqQZk=
+			co1n9Xb7Lm2Qb2sZrkbB80CI5cY=
 			</data>
 			<key>hash2</key>
 			<data>
-			tgHsJe0YrrsqVactfbsxWU3q/5FDzUfMMwb3e0C3eYE=
+			GPv7XPcgtt8RxAmYZ0KJwd3k3sKeeRQCdw6ZuS5a3Xk=
 			</data>
 		</dict>
 		<key>archived-expanded-entitlements.xcent</key>
@@ -774,22 +778,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			TcbyFd24myFk8RftIcsPsr5FIXw=
+			whlyvWmm0p68WthuqkOYNRrIURo=
 			</data>
 			<key>hash2</key>
 			<data>
-			vTdS+o//M+M3+uMamCsXhOpRLpq/PGpOnI13aV/A2HI=
+			QWBcFOM6FvhyKVWzOTWTgh33JlC7dn97rZ6FAEu15Tg=
 			</data>
 		</dict>
 		<key>www/js/BTScan.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1Qgyg0YsNucHNFy0PdOeEc0Vk3g=
+			3lHC21oCzsv1F8cTwgFQKSQQlyk=
 			</data>
 			<key>hash2</key>
 			<data>
-			aFMy1jn+MpTdTENVpe9PCd+LGXZ14V1dYCGXmcmYGgs=
+			Rlo8Qo/QdsxPGAwc2WeUs8UAfIvwi2L/tpVSN4ad5gw=
 			</data>
 		</dict>
 		<key>www/js/index.js</key>
@@ -812,6 +816,17 @@
 			<key>hash2</key>
 			<data>
 			hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=
+			</data>
+		</dict>
+		<key>www/js/jquery-ui.min.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Q6p1Be7FeYidJYUhtjvB97eBp9g=
+			</data>
+			<key>hash2</key>
+			<data>
+			iRWUckg+70ZBBFqSkmzb+lHyPRsVzcP8f4PY26fMhBA=
 			</data>
 		</dict>
 		<key>www/plugins/cordova-plugin-ble-central/www/ble.js</key>
