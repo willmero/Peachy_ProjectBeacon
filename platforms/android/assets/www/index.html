@@ -60,7 +60,7 @@
         <table id="faces" style="width: 100%; height: 100%; position: absolute; top: 0; background-image: url('img/background.jpg'); background-size: cover;"></table>
         <div class="container" id="friendly_screen_living_room">
             <div class="directions_header">
-                <p>Hi <span class="text_highlight">Thomas</span>,</p>
+                <p>Hi <span id="fir_name" class="text_highlight">Thomas</span>,</p>
                 <p>Welocome to the Living Room</p>
                 <div class="pure-u-1-2 option" style="disply:none">
                         <div class="option-button selectable">
@@ -181,7 +181,7 @@
         <script type="text/javascript" src="js/BTScan.js"></script>
         <script>
 
-            var userList = [["Pebble_Time_LE_213F", "elder.jpg"], ["Pebble_Time_LE_DC6A", "elder2.jpg"]] 
+            var userList = [["Pebble_Time_LE_213F", "patient-woman.jpg"], ["Pebble_Time_LE_DC6A", "elder2.jpg"]] 
 
             function onPause()
             {
@@ -296,14 +296,18 @@
         </script>
         <script type="text/javascript" src="js/index.js"></script>
         <script>
-            var id = ""
+            var id = "";
+            var names = {"Pebble Time LE 213F": "Jane", "Pebble Time LE DC6A": "Bob"};
+            
             function AddClick() {
                 $(".face-container").click(function() {
-                    console.log("Clicked");
+                    
+                    id = $(this).attr("id").replace(new RegExp("_", 'g'), " ");
                     $("#faces").hide(500);
+                    $("#fir_name").html(names[id]);
                     $("#living_room_containter").show(500);
                     $(".container").css("background-size", "cover");
-                    id = $(this).attr("id").replace(new RegExp("_", 'g'), " ");
+                    
                 });
                 $("#option_button_meds").click(function() {
                     console.log("click");
@@ -333,7 +337,8 @@
             function authcallback(auth)
             {
                 $("#authentication_container").hide(500);
-                $("#medication_container").show(500);                
+                $("#medication_container").show(500);  
+                $(".container").css("background-size", "cover");      
             }
             $(".container").css("background-size", "cover");
             AddClick();
