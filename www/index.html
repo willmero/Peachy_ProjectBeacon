@@ -64,14 +64,11 @@
             <div class="directions_header">
                 <p>Hi <span class="text_highlight">Thomas</span>,</p>
                 <p>Welocome to the Living Room</p>
-                <div class="pure-u-1-2 option">
+                <div class="pure-u-1-2 option" style="disply:none">
                         <div class="option-button selectable">
                           <span>Help</span>
                         </div>
                     </div>
-            </div>
-            <div class="directions_body">
-                <span class="fa fa-long-arrow-left fa-5x"></span>
             </div>
         </div>
 
@@ -122,15 +119,15 @@
                 </br>
                 <p>That will be in 20 minutes</p>
                 <div class="pure-u-1-2 option">
-                    <div class="option-button selectable">
-                        <span class="fa fa-calender"></span><span>OK</span>
+                        <div class="option-button selectable">
+                          <span>OK</span>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
 
 
-        <div class="container"  id="lunch_time_container" >
+        <div class="container"  id="lunch_time_container" style="">
             <div class="schedule-header" style="width: 100%; height: 70%;">
                 <p>Looks like it's <span class="text-highlight">almost lunchtime</span>.</p>
                 <p>Would you like to head over to the dinning hall?</p>
@@ -155,7 +152,7 @@
             </div>
         </div>
 
-
+        
         <div class="container" id="directions_container_left" >
             <div class="directions_header">
                 <p>The DINING HALL is straight down to your <span>left</span></p>
@@ -298,9 +295,10 @@
         <script>
             function AddClick() {
                 $(".face-container").click(function() {
-                    console.log("Clicked");    
+                    
                     $("#faces").hide(500);
                     $("#living_room_containter").show(500);
+                    
                 });
                 $("#option-button-schedule").click(function() {
                     $("#option-button-schedule").find(".selectable").css('background-color', 'green');
@@ -315,6 +313,21 @@
                 console.log("Added Click");
             }
             $(".container").css("background-image", "url('img/background.jpg')");
+                
+           //  var temp = true;
+           //  var id = $(this).attr("id").replace(new RegExp("_", 'g'), " ");
+           // if(temp){
+           //      BTScan_Auth(id, authcallback);
+           //      temp = false;
+           //  }
+           //  function authcallback(auth)
+           //  {
+           //      if(auth)
+           //          //good
+           //      else   
+           //          //bad
+           //  }
+
         </script>
     </body>
 </html>
