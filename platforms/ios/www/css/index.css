@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+@import './font-awesome.min.css'
 @import './pure-min.css'
 
 * {
@@ -128,6 +129,14 @@ h1 {
     height: 100%;
 }
 
+.option-full {
+    width: 100%;
+}
+
+.option-select {
+    background-color: green;
+}
+
 .option-row {
     height: 25%;
 }
@@ -186,7 +195,7 @@ h1 {
 }
 
 .directions_header span {
-    color: yellow;
+    /*color: yellow;*/
 }
 
 .directions_body {
@@ -202,5 +211,16 @@ h1 {
 
 .container {
     /*background-color: black;*/
+    
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
     font-size: 0.5em;
  }
+
+.text_highlight
+{
+    color: yellow;
+}
