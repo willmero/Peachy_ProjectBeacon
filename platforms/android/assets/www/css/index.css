@@ -16,6 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+@import './font-awesome.min.css'
 @import './pure-min.css'
 
 * {
@@ -216,9 +217,16 @@ h1 {
     position: absolute;
     top: 0;
     display: none;
+    font-size: 1em;
+    padding-top: 40px;
  }
 
 .text_highlight
 {
     color: yellow;
+}
+
+.auth_img {
+    width: 100%; 
+    height: 100%; 
 }

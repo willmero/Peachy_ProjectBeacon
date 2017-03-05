@@ -182,7 +182,7 @@
         <script type="text/javascript" src="js/BTScan.js"></script>
         <script>
 
-            var userList = [["Pebble_Time_LE_213F", "elder.jpg"], ["Pebble_Time_LE_DC6A", "elder2.jpg"]] 
+            var userList = [["Pebble_Time_LE_213F", "patient-woman.jpg"], ["Pebble_Time_LE_DC6A", "elder2.jpg"]] 
 
             function onPause()
             {
@@ -297,23 +297,24 @@
         </script>
         <script type="text/javascript" src="js/index.js"></script>
         <script>
+            var id = ""
             function AddClick() {
                 $(".face-container").click(function() {
                     console.log("Clicked");
                     $("#faces").hide(500);
                     $("#living_room_containter").show(500);
                     $(".container").css("background-size", "cover");
+                    id = $(this).attr("id").replace(new RegExp("_", 'g'), " ");
                 });
                 $("#option_button_meds").click(function() {
                     $("#option_button_meds").find(".selectable").css('background-color', 'green');
                     $("#living_room_containter").hide(500);
                     $("#authentication_container").show(500);
                     $(".container").css("background-size", "cover");
+                    console.log(id);
+                    BTScan_Auth(id, authcallback);
                 });
-                $("#authentication_container").click(function() {
-                    $("#authentication_container").hide(500);
-                    $("#medication_container").show(500);
-                });
+
                 $("#medication_container_button_ok").click(function() {
                     $("#medication_container").hide(500);
                     $("#living_room_containter").show(500);
@@ -327,20 +328,12 @@
                 console.log("Added Click");
             }
             $(".container").css("background-image", "url('img/background.jpg')");
-           //  var temp = true;
-           //  var id = $(this).attr("id").replace(new RegExp("_", 'g'), " ");
-           // if(temp){
-           //      BTScan_Auth(id, authcallback);
-           //      temp = false;
-           //  }
-           //  function authcallback(auth)
-           //  {
-           //      if(auth)
-           //          //good
-           //      else
-           //          //bad
-           //  }
-
+            function authcallback(auth)
+            {
+                $("#authentication_container").hide(500);
+                $("#medication_container").show(500);  
+                $(".container").css("background-size", "cover");      
+            }
             $(".container").css("background-size", "cover");
             AddClick();
         </script>
