@@ -9,6 +9,7 @@ function AddDevice(device)
         BT_Devices[device.name] = {}
         BT_Devices[device.name].rssi = device.rssi;
         BT_Devices[device.name].id = device.id;
+        console.log(device);
     }
 }
 

@@ -34,21 +34,26 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Peachy</title>
+        <style>
+            .face-container {
+                border-radius: 50%;
+                color: white;
+                background: red;
+            }
+        </style>
         <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-
     </head>
     <body>
-        <div id="BT_Devices"><div>
-        <br>
-        <br>
-        <div id="band1">Band 1</div>
-        <br>
-        <div id="band1">Band 2</div>
+        <div id="BT_Devices"></div>
+        <div id="faces_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px;"></div>
         <script type="text/javascript" src="cordova.js"></script>
         
 
         <script type="text/javascript" src="js/BTScan.js"></script>
         <script>
+
+            var userList = [["D75FEC3E-4783-47C3-8386-D8D54A52343F", "elder.jpg"], ["DD43F844-3F00-462A-910F-7D9C3FAFB9B0", "elder2.jpg"]] 
+
             function onPause()
             {
                 BTScan_Stop();
@@ -68,9 +73,32 @@
             function deviceCallback(name, rssi, id, true_rssi_value)
             {
                 if($("#BT_Devices").find("#" + id).length > 0){
-                    $("#BT_Devices").find("#" + id).html('ID: '+id+', rssi: '+ rssi+', name: '+ name);
+                    $("#BT_Devices").find("#" + id).html('ID: '+id+', rssi: '+ rssi+', name: '+ name + ', true rssi: ' + true_rssi_value);
                 } else {
                     $("#BT_Devices").append('<p id="' + id + '">ID: '+id+', rssi: '+ rssi+', name: '+ name+'</p>');
+                }
+
+                createFaceBubble(id, rssi);
+                
+            }
+
+            function getUserPhoto(id){
+                for(i=0; i < userList.length; i++){
+                    if(userList[i][0] == id){
+                        return userList[i][1];
+                    }
+                }
+            }
+
+            function createFaceBubble(id, rssi){
+                // append to the faces
+                if($("#faces_container").find("#" + id).length > 0){
+                    // update size based on current size
+                    $("#faces_container").find("#" + id).css("width", ($(window).width() * rssi));
+                    $("#faces_container").find("#" + id).css("height", ($(window).width() * rssi));
+                } else {
+                    $("#faces_container").append('<div class="face-container" id="' + id +'" style="width:' + ($(window).width() * rssi) + 'px; height: ' + ($(window).width() * rssi) + 'px;">' + name + '</div>');
+                    $("#faces_container").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
                 }
             }
         </script>

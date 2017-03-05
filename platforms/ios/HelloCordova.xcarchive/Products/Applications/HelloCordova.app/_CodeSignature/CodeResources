@@ -86,7 +86,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		wbngb2DgLfG0FsW+wEroAgH4FR0=
+		0KRkzGHhQAe0FZ18W/AFYCawQq0=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -94,7 +94,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		AN2Jlw9tsq1E6+OXcdHoOXC+CbE=
+		ovHkXVhNky+671LEBfxjlHExOao=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -158,7 +158,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		IEEtks4vZ26rd89FHbbnCF9shIA=
+		PxwUvTe6SScjwAbFvoMjd7WqQZk=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -174,7 +174,7 @@
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		4zNFOLx9sHmLB4V4JxBJAuUbYao=
+		a7eKiUkgitzaqKRf7nQSOzN0ono=
 		</data>
 		<key>www/cordova-js-src/exec.js</key>
 		<data>
@@ -196,17 +196,25 @@
 		<data>
 		Xn5KKnRg99sIQW5z0rf5zJjEDgI=
 		</data>
+		<key>www/img/elder.jpg</key>
+		<data>
+		snVih0MAaQYLsaouU3ben2FfyIo=
+		</data>
+		<key>www/img/elder2.jpg</key>
+		<data>
+		3Xg1IYSuALFLPFEZvWyhbBNpPEc=
+		</data>
 		<key>www/img/logo.png</key>
 		<data>
 		MW0GF0+VJyF3L6n2kH6NKUswUL0=
 		</data>
 		<key>www/index.html</key>
 		<data>
-		CR67pg3f2jXWujiGaAA0wEThdZI=
+		TcbyFd24myFk8RftIcsPsr5FIXw=
 		</data>
 		<key>www/js/BTScan.js</key>
 		<data>
-		jq3+kuuVlv0ODRqD09LG4C0vqJM=
+		1Qgyg0YsNucHNFy0PdOeEc0Vk3g=
 		</data>
 		<key>www/js/index.js</key>
 		<data>
@@ -447,11 +455,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wbngb2DgLfG0FsW+wEroAgH4FR0=
+			0KRkzGHhQAe0FZ18W/AFYCawQq0=
 			</data>
 			<key>hash2</key>
 			<data>
-			CcO/JoLAOYuUAfnIy9j/gdpQgGXj0HLCx/qjruaaHAc=
+			lfF5TTk2zGsoPJ3RGdmUxSYIR0dL7C406kfIil65HXM=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -469,11 +477,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AN2Jlw9tsq1E6+OXcdHoOXC+CbE=
+			ovHkXVhNky+671LEBfxjlHExOao=
 			</data>
 			<key>hash2</key>
 			<data>
-			4tThlrdIMKFbibPFTRT4ikF14q/AMLjhnGsjvRzxrkA=
+			otX9vczWjmRiqQSmEBrd6qwsKtJXMqPx7G/smmgTb38=
 			</data>
 		</dict>
 		<key>LaunchImage-568h@2x.png</key>
@@ -634,11 +642,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			IEEtks4vZ26rd89FHbbnCF9shIA=
+			PxwUvTe6SScjwAbFvoMjd7WqQZk=
 			</data>
 			<key>hash2</key>
 			<data>
-			5pGO6umYFHO01305UJWLZmbwfEOUDaGLvuRNy38ApUI=
+			tgHsJe0YrrsqVactfbsxWU3q/5FDzUfMMwb3e0C3eYE=
 			</data>
 		</dict>
 		<key>archived-expanded-entitlements.xcent</key>
@@ -667,11 +675,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4zNFOLx9sHmLB4V4JxBJAuUbYao=
+			a7eKiUkgitzaqKRf7nQSOzN0ono=
 			</data>
 			<key>hash2</key>
 			<data>
-			rcL3vQrak016iQmZfR+uOj2TjWRlrm5LPZ8NFLxzeI0=
+			1S5dpcj4z343DA2jgY+4HsmPOF5nN7NTUDEbwsE5elI=
 			</data>
 		</dict>
 		<key>www/cordova-js-src/exec.js</key>
@@ -729,6 +737,28 @@
 			5bg/tLVvOVZjiDi1fEL1Cdhdj8DgKy/4485HSbcgzQc=
 			</data>
 		</dict>
+		<key>www/img/elder.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			snVih0MAaQYLsaouU3ben2FfyIo=
+			</data>
+			<key>hash2</key>
+			<data>
+			rUWceX4QOd94KcnoUyrSL+HgLgmpQizahGVsfyjeRAo=
+			</data>
+		</dict>
+		<key>www/img/elder2.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			3Xg1IYSuALFLPFEZvWyhbBNpPEc=
+			</data>
+			<key>hash2</key>
+			<data>
+			RJSU3nVNY13Oifd3Y/Gb7oglP8rAnJEPfhX8puzDSHE=
+			</data>
+		</dict>
 		<key>www/img/logo.png</key>
 		<dict>
 			<key>hash</key>
@@ -744,22 +774,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CR67pg3f2jXWujiGaAA0wEThdZI=
+			TcbyFd24myFk8RftIcsPsr5FIXw=
 			</data>
 			<key>hash2</key>
 			<data>
-			kf0geGpQqUa9P0kceSlebTl/kbc59rGL0mlIMIfIgQA=
+			vTdS+o//M+M3+uMamCsXhOpRLpq/PGpOnI13aV/A2HI=
 			</data>
 		</dict>
 		<key>www/js/BTScan.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			jq3+kuuVlv0ODRqD09LG4C0vqJM=
+			1Qgyg0YsNucHNFy0PdOeEc0Vk3g=
 			</data>
 			<key>hash2</key>
 			<data>
-			28qkUUFaDYEg///fVZ2dNfM74PzZ6Bm7DBxBk6t3cg8=
+			aFMy1jn+MpTdTENVpe9PCd+LGXZ14V1dYCGXmcmYGgs=
 			</data>
 		</dict>
 		<key>www/js/index.js</key>
