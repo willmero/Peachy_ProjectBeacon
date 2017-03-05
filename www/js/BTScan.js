@@ -28,7 +28,7 @@ function removeDevice(name, device)
     }
     else
     {
-        setTimeout(removeDevice, 8 * BT_ACCEPTED_DEVICE_REFRESH_RATE, name, BT_Devices[name]);
+        setTimeout(removeDevice, 12 * BT_ACCEPTED_DEVICE_REFRESH_RATE, name, BT_Devices[name]);
     }
 
 }
@@ -43,13 +43,13 @@ function callbackAcceptedDeviced()
             var size = BT_Devices[name].rssi;
             if(size > 1)
                 return
-            if(size  > -100)
+            if(size  > -115)
                 bucketSize = 4
-            if(size  > -100)
+            if(size  > -115)
                 bucketSize = 3;
-            if(size > -85)
+            if(size > -100)
                 bucketSize = 2;
-            if(size > -55)
+            if(size > -90)
                 bucketSize = 1;
 
             item.callback(name, bucketSize, BT_Devices[name].id,  BT_Devices[name].rssi);            

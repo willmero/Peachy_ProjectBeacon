@@ -32,8 +32,8 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/pure-min.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Peachy</title>
         <style>
@@ -58,7 +58,7 @@
     </head>
     <body>
 
-        <table id="faces" style="width: 100%; height: 100%; position: absolute; top: 0;"></table>
+        <table id="faces" style="width: 100%; height: 100%; position: absolute; top: 0; background-image: url('img/background.jpg'); background-size: cover;"></table>
 
         <div class="container" id="friendly_screen_living_room">
             <div class="directions_header">
@@ -170,7 +170,10 @@
             </div>
         </div>
 
-        <div class="container" id="finished_container" ></div>
+        <div class="container" id="finished_container" >
+
+
+        </div>
 
         <!-- <div id="BT_Devices" style="display: none;"></div> -->
         <!-- <table id="faces" class="faces-table"></table> -->
@@ -201,6 +204,7 @@
             function bubbledestroy(name)
             {
                 var id = name.replace(new RegExp(" ", 'g'), "_");
+                $("#faces").find("#" + id).parent().fadeOut();
                 $("#faces").find("#" + id).parent().remove();
             }
 
@@ -246,13 +250,13 @@
                         // update size based on current size
                         if($(window).width() > $(window).height()){
                             // device is in landscape
-                             $("#faces").find("#" + id).animate({ width: ($(thisItem).height() * weight)/2 + "px", height: ($(thisItem).height() * weight)/2 + "px"}, {
+                             $("#faces").find("#" + id).animate({ width: (($(thisItem).height() * weight)/2)+100 + "px", height: (($(thisItem).height() * weight)/2)+100 + "px"}, {
                                 duration: 700,
                                 easing: 'easeOutElastic'
                             });
                         } else {
                             // device is vertical
-                            $("#faces").find("#" + id).animate({ width: ($(window).width() * weight)/2 + "px", height: ($(window).width() * weight)/2 + "px"}, {
+                            $("#faces").find("#" + id).animate({ width: (($(thisItem).height() * weight)/2)+100 + "px", height: (($(thisItem).height() * weight)/2)+100 + "px"}, {
                                 duration: 700,
                                 easing: 'easeOutElastic'
                             });
@@ -295,20 +299,22 @@
         <script>
             function AddClick() {
                 $(".face-container").click(function() {
-                    
+                    console.log("Clicked");
                     $("#faces").hide(500);
                     $("#living_room_containter").show(500);
-                    
+                    $(".container").css("background-size", "cover");
                 });
                 $("#option-button-schedule").click(function() {
                     $("#option-button-schedule").find(".selectable").css('background-color', 'green');
                     $("#living_room_containter").hide(500);
                     $("#schedule_container").show(500);
+                    $(".container").css("background-size", "cover");
                 });
                 $("#schedule-button-yes").click(function() {
                     $("#schedule-button-yes").find(".selectable").css('background-color', 'green');
                     $("#schedule_container").hide(500);
                     $("#directions_container_left").show(500);
+                    $(".container").css("background-size", "cover");
                 });
                 console.log("Added Click");
             }
@@ -328,6 +334,7 @@
            //          //bad
            //  }
 
+            $(".container").css("background-size", "cover");
         </script>
     </body>
 </html>
