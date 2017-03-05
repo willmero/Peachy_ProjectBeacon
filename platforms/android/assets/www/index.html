@@ -62,11 +62,11 @@
             <div class="directions_header">
                 <p>Hi <span id="fir_name" class="text_highlight">Thomas</span>,</p>
                 <p>Welocome to the Living Room</p>
-                <div class="pure-u-1-2 option" style="disply:none">
+                <!--div class="pure-u-1-2 option" style="disply:none">
                         <div class="option-button selectable">
                           <span>Help</span>
                         </div>
-                    </div>
+                    </div-->
             </div>
         </div>
 
@@ -116,8 +116,8 @@
                 <p>That will be in 20 minutes</p>
 
                 <div id="medication_container_button_ok" class="pure-u-1-2 option">
-                    <div class="option-button selectable">
-                        <span class="fa fa-calender"></span><span>OK</span>
+                    <div class="option-button selectable ok">
+                        OK
                     </div>
                 </div>
             </div>
@@ -151,7 +151,6 @@
             </div>
         </div>
 
-        
         <div class="container" id="directions_container_left" >
             <div class="directions_header">
                 <p>The DINING HALL is straight down to your <span>left</span></p>
@@ -296,21 +295,32 @@
         </script>
         <script type="text/javascript" src="js/index.js"></script>
         <script>
-            var id = "";
-            var names = {"Pebble Time LE 213F": "Jane", "Pebble Time LE DC6A": "Bob"};
-            
+            var id = ""
+            function AddTransition() {
+                if (id === "Pebble Time LE 213F" || id === "") {
+                    $("#friendly_screen_living_room").hide(1500);
+                    $("#living_room_containter").show(1500);
+                } else if (id === "Pebble Time LE DC6A") {
+                    $("#friendly_screen_living_room").hide(500);
+                    $("#lunch_time_container").show(500);
+                }
+            }
             function AddClick() {
                 $(".face-container").click(function() {
                     
                     id = $(this).attr("id").replace(new RegExp("_", 'g'), " ");
                     $("#faces").hide(500);
-                    $("#fir_name").html(names[id]);
-                    $("#living_room_containter").show(500);
+                    // $("#fir_name").html(names[id]);
+                    // $("#living_room_containter").show(500);
+
+                    $("#friendly_screen_living_room").show(500);
                     $(".container").css("background-size", "cover");
+
+
+                    setTimeout(AddTransition(), 1000);
                     
                 });
                 $("#option_button_meds").click(function() {
-                    console.log("click");
                     $("#option_button_meds").find(".selectable").css('background-color', 'green');
                     $("#living_room_containter").hide(500);
                     $("#authentication_container").show(500);
@@ -332,16 +342,15 @@
                 console.log("Added Click");
             }
             $(".container").css("background-image", "url('img/background.jpg')");
-                
-                
             function authcallback(auth)
             {
                 $("#authentication_container").hide(500);
-                $("#medication_container").show(500);  
-                $(".container").css("background-size", "cover");      
+                $("#medication_container").show(500);
+                $(".container").css("background-size", "cover");
             }
             $(".container").css("background-size", "cover");
             AddClick();
+            // AddTransition();
         </script>
     </body>
 </html>
