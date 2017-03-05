@@ -57,7 +57,7 @@
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     </head>
     <body>
-        <!-- <div id="BT_Devices"></div> -->
+        <div id="BT_Devices"></div>
         <div class="container" id="faces" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: block"></div>
         <div class="container" id="options_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none;">
             <div class="options-header" style="width: 100%; height: 10%;">Based on your previous selections...</div>
@@ -163,9 +163,10 @@
                 if($("#BT_Devices").find("#" + ID).length > 0){
                     $("#BT_Devices").find("#" + ID).html('ID: '+id+', bucketID: '+ bucketID+', name: '+ name + ', true rssi: ' + true_rssi_value);
                 } else {
-                    // $("#BT_Devices").append('<p class="btdevice" id="' + ID + '">ID: '+id+', bucketID: '+ bucketID+', name: '+ name+'</p>');
+                    $("#BT_Devices").append('<p class="btdevice" id="' + ID + '">ID: '+id+', bucketID: '+ bucketID+', name: '+ name+'</p>');
                 }
 
+                console.log(name)
                 createFaceBubble(ID, bucketID);
             }
 
@@ -234,15 +235,77 @@
                             $("#faces").find("#" + id).fadeIn();
                         }
                     }
-                    AddClick();
+                    
                 }
             }
+
+            // function createFaceBubble(id, bucketID){
+            //     // append to the faces
+            //     var weight;
+            //     if(bucketID == 1){
+            //         weight = 100;
+            //     } else if(bucketID == 2){
+            //         weight = 65;
+            //     } else if(bucketID == 3){
+            //         weight = 35;
+            //     } else if(bucketID == 4){
+            //         weight = 35;
+            //     }
+
+            //     var faces = $("#faces").find("#" + id);
+            //     if(faces.length > 0){
+            //         // update size based on current size
+            //         console.log(faces);
+            //         if (faces.width() !== weight + "%")
+
+            //             $("#faces").find("#" + id).animate({ width: (weight + "%"), height: (weight + "%")}, {
+            //                 duration: 700,
+            //                 easing: 'easeOutElastic'
+            //             });
+            //         //BLA
+
+            //     } else {
+
+            //         console.log("Ran2");
+            //         // device is in landscape
+            //         if($("#faces").find("tr").length > 0){
+            //             console.log("Ran3");
+            //             // already a row
+            //             $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + (weight + "%") + '; height: ' + (weight + "%") + ';">' + name + '</div></td></td>');
+                        
+            //             $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+            //             $("#faces").find("#" + id).fadeIn();
+            //             console.log("Ran3");
+            //         } else {
+            //             console.log("Ran4");
+            //             // device is vertical
+            //             if($("#faces").find("tr").length > 0){
+            //                 console.log("Ran5");
+            //                 // already a row
+            //                 $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).width() * weight) + 'px; height: ' + ($(window).width() * weight) + 'px;">' + name + '</div></td></td>');
+            //                 $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+            //                 $("#faces").find("#" + id).fadeIn();
+            //                 console.log("Ran5");
+            //             } else {
+            //                 // no row, add it
+            //                 console.log("Ran6");
+            //                 $("#faces").append('<tr><td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).width() * weight) + 'px; height: ' + ($(window).width() * weight) + 'px;">' + name + '</div></td></tr>');
+            //                 $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+            //                 $("#faces").find("#" + id).fadeIn();
+            //                 console.log("Ran6");
+            //             }
+            //             console.log("Ran4");
+            //         }
+            //         console.log("Ran2");
+            //         AddClick();
+            //     }
+            // }
 
         </script>
         <script type="text/javascript" src="js/index.js"></script>
         <script>
             function AddClick() {
-                $("#faces").click(function() {
+                $("#faces-container").click(function() {
                     console.log("Clicked");    
                     $("#faces").hide(500);
                     $("#options_container").show(500);
