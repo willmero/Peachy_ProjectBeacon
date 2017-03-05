@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+@import './pure-min.css'
+
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
@@ -102,14 +104,79 @@ h1 {
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
- 
+
 @-webkit-keyframes fade {
     from { opacity: 1.0; }
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
- 
+
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+.options-header {
+    display: block;
+    color: white;
+    font-size: 3em;
+    text-align: center;
+}
+
+.option {
+    width: 50%;
+    height: 100%;
+}
+
+.option-row {
+    height: 25%;
+}
+
+.option div {
+    width: 60%;
+    height: 40%;
+    display: block;
+    color: white;
+    font-size: 2.5em;
+    text-align: center;
+    line-height: 2.5em;
+    margin: auto;
+    border: 1px solid white;
+    border-radius: 15px;
+}
+
+.schedule-header {
+    padding: 10px;
+}
+
+.schedule-header p {
+    text-align: center;
+    font-size: 4em;
+    color: white;
+}
+
+.schedule-header p span {
+    color: yellow;
+}
+
+.schedule {
+    width: 50%; 
+    height: 100%;
+}
+
+.schedule div {
+    width: 60%;
+    height: 35%;
+    display: block;
+    color: white;
+    font-size: 2.5em;
+    text-align: center;
+    margin: auto;
+    border: 1px solid white;
+    border-radius: 15px;
+    line-height: 2.5em;
+}
+
+ .container {
+    background-color: black;
+ }
