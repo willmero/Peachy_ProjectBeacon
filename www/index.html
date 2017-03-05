@@ -58,7 +58,7 @@
     </head>
     <body>
 
-        <table id="faces" style="width: 100%; height: 100%; position: absolute; top: 0;"></table>
+        <table id="faces" style="width: 100%; height: 100%; position: absolute; top: 0; background-image: url('img/background.jpg'); background-size: cover;"></table>
 
         <div class="container" id="friendly_screen_living_room">
             <div class="directions_header">
@@ -301,20 +301,24 @@
                     console.log("Clicked");    
                     $("#faces").hide(500);
                     $("#living_room_containter").show(500);
+                    $(".container").css("background-size", "cover");
                 });
                 $("#option-button-schedule").click(function() {
                     $("#option-button-schedule").find(".selectable").css('background-color', 'green');
                     $("#living_room_containter").hide(500);
                     $("#schedule_container").show(500);
+                    $(".container").css("background-size", "cover");
                 });
                 $("#schedule-button-yes").click(function() {
                     $("#schedule-button-yes").find(".selectable").css('background-color', 'green');
                     $("#schedule_container").hide(500);
                     $("#directions_container_left").show(500);
+                    $(".container").css("background-size", "cover");
                 });
                 console.log("Added Click");
             }
             $(".container").css("background-image", "url('img/background.jpg')");
+            $(".container").css("background-size", "cover");
         </script>
     </body>
 </html>
