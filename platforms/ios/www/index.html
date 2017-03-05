@@ -57,56 +57,62 @@
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     </head>
     <body>
-        <!-- <div id="BT_Devices"></div> -->
-        <div class="container" id="faces" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: block"></div>
+        <div id="BT_Devices"></div>
+        <table class="container" id="faces" style="width: 100%; height: 100%; position: absolute; top: 0;"></table>
         <div class="container" id="options_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none;">
-            <div class="options-header" style="width: 100%; height: 10%;">Based on your previous selections...</div>
+            <div class="options-header" style="width: 100%; height: 10%;">In the Living Room, you usually prefer to:</div>
             <div class="options-body" style="width: 100%; height: 90%;">
                 <div class="option-row pure-g">
                     <div id="option-button-schedule" class="pure-u-1-2 option">
                         <div class="option-button selectable">
-                            <span class="fa fa-calendar"></span><span> Schedule</span>
+                            <span class="fa fa-talk"></span><span> Talk to a caregiver</span>
                         </div>
                     </div>
+                    <!--
                     <div class="pure-u-1-2 option">
                         <div class="option-button selectable">
                             <span class="fa fa-map-marker"></span><span> Location</span>
                         </div>
                     </div>
+                    -->
                 </div>
                 <div class="option-row pure-g">
                     <div class="pure-u-1-2 option">
                         <div>
-                            <span class="fa fa-medkit"></span><span> Medications</span>
+                            <span class="fa fa-medkit"></span><span> Take medications</span>
                         </div>
                     </div>
+                    <!--
                     <div class="pure-u-1-2 option">
                         <div>
                             <span class="fa fa-question-circle-o"></span><span> Lost Item</span>
                         </div>
                     </div>
+                    -->
                 </div>
                 <div class="option-row pure-g">
                     <div class="pure-u-1-2 option">
                         <div>
-                            <span class="fa fa-gamepad"></span><span> Acitvities</span>
+                            <span class="fa fa-gamepad"></span><span> Watch TV</span>
                         </div>
                     </div>
+                    <!--
                     <div class="pure-u-1-2 option">
                         <div>
                             <span class="fa fa-commenting-o"></span><span> Reminders</span>
                         </div>
                     </div>
+                    -->
                 </div>
                 <div class="option-row pure-g">
                     <div class="pure-u-1-2 option">
                         <div>
-                            <span class="fa fa-search"></span><span> Browse Apps</span>
+                            <span class="fa fa-warning"></span><span> I'm lost</span>
                         </div>
                     </div>
                     <div class="pure-u-1-2 option">
                         <div>
-                            <span class="fa fa-warning"></span><span> I need help!</span>
+                            <span class="fa fa-calender"></span><span> See my schedule</span>
                         </div>
                     </div>
                 </div>
@@ -176,11 +182,11 @@
             function deviceCallback(name, bucketID, id, true_rssi_value)
             {
                var ID = name.replace(new RegExp(" ", 'g'), "_");
-                if($("#BT_Devices").find("#" + ID).length > 0){
-                    $("#BT_Devices").find("#" + ID).html('ID: '+id+', bucketID: '+ bucketID+', name: '+ name + ', true rssi: ' + true_rssi_value);
-                } else {
-                    // $("#BT_Devices").append('<p class="btdevice" id="' + ID + '">ID: '+id+', bucketID: '+ bucketID+', name: '+ name+'</p>');
-                }
+                // if($("#BT_Devices").find("#" + ID).length > 0){
+                //     $("#BT_Devices").find("#" + ID).html('ID: '+id+', bucketID: '+ bucketID+', name: '+ name + ', true rssi: ' + true_rssi_value);
+                // } else {
+                //     $("#BT_Devices").append('<p class="btdevice" id="' + ID + '">ID: '+id+', bucketID: '+ bucketID+', name: '+ name+'</p>');
+                // }
 
                 createFaceBubble(ID, bucketID);
             }
@@ -197,54 +203,73 @@
                 // append to the faces
                 var weight;
                 if(bucketID == 1){
-                    weight = 100;
+                    weight = 1;
                 } else if(bucketID == 2){
-                    weight = 65;
+                    weight = 0.65;
                 } else if(bucketID == 3){
-                    weight = 35;
+                    weight = 0.35;
                 } else if(bucketID == 4){
-                    weight = 35;
+                    weight = 0.20;
                 }
-
+                var thisItem;
+                var thisRow;
                 if($("#faces").find("#" + id).length > 0){
-                    // update size based on current size
-                    
-                    $("#faces").find("#" + id).animate({ width: (weight + "%"), height: (weight + "%")}, {
-                        duration: 700,
-                        easing: 'easeOutElastic'
-                    });
-                    //BLA
+                    thisItem = $("#faces").find("#" + id).parent();
+                    thisRow = $("#faces").find("#" + id).parent().parent();
+                    if($(thisRow).find(".face-container").length > 1){
+                        // 2 faces
+                        // update size based on current size
+                        if($(window).width() > $(window).height()){
+                            // device is in landscape
+                             $("#faces").find("#" + id).animate({ width: ($(thisItem).height() * weight)/2 + "px", height: ($(thisItem).height() * weight)/2 + "px"}, {
+                                duration: 700,
+                                easing: 'easeOutElastic'
+                            });
+                        } else {
+                            // device is vertical
+                            $("#faces").find("#" + id).animate({ width: ($(window).width() * weight)/2 + "px", height: ($(window).width() * weight)/2 + "px"}, {
+                                duration: 700,
+                                easing: 'easeOutElastic'
+                            });
+                        }
+                    } else {
+                        // 1 face
+                        // update size based on current size
+                        if($(window).width() > $(window).height()){
+                            // device is in landscape
+                             $("#faces").find("#" + id).animate({ width: ($(thisItem).height() * weight) + "px", height: ($(thisItem).height() * weight) + "px"}, {
+                                duration: 700,
+                                easing: 'easeOutElastic'
+                            });
+                        } else {
+                            // device is vertical
+                            $("#faces").find("#" + id).animate({ width: ($(window).width() * weight) + "px", height: ($(window).width() * weight) + "px"}, {
+                                duration: 700,
+                                easing: 'easeOutElastic'
+                            });
+                        }
+                    }  
                 } else {
-                    // device is in landscape
+                    thisItem = $("#faces").find("#" + id);
                     if($("#faces").find("tr").length > 0){
                         // already a row
-                        $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + (weight + "%") + '; height: ' + (weight + "%") + ';">' + name + '</div></td></td>');
-                        
+                        $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(thisItem).height() * weight) + 'px; height: ' + ($(thisItem).height() * weight) + 'px;">' + name + '</div></td></td>');
                         $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
                         $("#faces").find("#" + id).fadeIn();
                     } else {
-                        // device is vertical
-                        if($("#faces").find("tr").length > 0){
-                            // already a row
-                            $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).width() * weight) + 'px; height: ' + ($(window).width() * weight) + 'px;">' + name + '</div></td></td>');
-                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
-                            $("#faces").find("#" + id).fadeIn();
-                        } else {
-                            // no row, add it
-                            $("#faces").append('<tr><td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).width() * weight) + 'px; height: ' + ($(window).width() * weight) + 'px;">' + name + '</div></td></tr>');
-                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
-                            $("#faces").find("#" + id).fadeIn();
-                        }
+                        // no row, add it
+                        $("#faces").append('<tr><td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(thisItem).height() * weight) + 'px; height: ' + ($(thisItem).height() * weight) + 'px;">' + name + '</div></td></tr>');
+                        $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                        $("#faces").find("#" + id).fadeIn();
                     }
                     AddClick();
                 }
             }
-
         </script>
         <script type="text/javascript" src="js/index.js"></script>
         <script>
             function AddClick() {
-                $("#faces").click(function() {
+                $(".face-container").click(function() {
                     console.log("Clicked");    
                     $("#faces").hide(500);
                     $("#options_container").show(500);
@@ -261,6 +286,7 @@
                 });
                 console.log("Added Click");
             }
+            $(".container").css("background-image", url('../img/background.jpg'));
         </script>
     </body>
 </html>
