@@ -207,6 +207,7 @@
             function bubbledestroy(name)
             {
                 var id = name.replace(new RegExp(" ", 'g'), "_");
+                $("#faces").find("#" + id).parent().fadeOut();
                 $("#faces").find("#" + id).parent().remove();
             }
 
