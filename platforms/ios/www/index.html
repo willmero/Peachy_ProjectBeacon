@@ -111,60 +111,37 @@
                 // append to the faces
                 var weight;
                 if(bucketID == 1){
-                    weight = 1;
+                    weight = 100;
                 } else if(bucketID == 2){
-                    weight = 0.65;
+                    weight = 65;
                 } else if(bucketID == 3){
-                    weight = 0.35;
+                    weight = 35;
                 } else if(bucketID == 4){
-                    weight = 0.20;
+                    weight = 35;
                 }
 
                 if($("#faces").find("#" + id).length > 0){
                     // update size based on current size
-                    if($(window).width() > $(window).height()){
-                        // device is in landscape
-                         $("#faces").find("#" + id).animate({ width: ($(window).height() * weight) + "px", height: ($(window).height() * weight) + "px"}, {
-                            duration: 700,
-                            easing: 'easeOutElastic'
-                        });
-                    } else {
-                        // device is vertical
-                        $("#faces").find("#" + id).animate({ width: ($(window).width() * weight) + "px", height: ($(window).width() * weight) + "px"}, {
-                            duration: 700,
-                            easing: 'easeOutElastic'
-                        });
-                    }
+                    
+                    $("#faces").find("#" + id).animate({ width: (weight + "%"), height: (weight + "%")}, {
+                        duration: 700,
+                        easing: 'easeOutElastic'
+                    });
                     
                 } else {
-                    if($(window).width() > $(window).height()){
-                        // device is in landscape
-                        if($("#faces").find("tr").length > 0){
-                            // already a row
-                            $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).height() * weight) + 'px; height: ' + ($(window).height() * weight) + 'px;">' + name + '</div></td></td>');
-                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
-                            $("#faces").find("#" + id).fadeIn();
-                        } else {
-                            // no row, add it
-                            $("#faces").append('<tr><td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).height() * weight) + 'px; height: ' + ($(window).height() * weight) + 'px;">' + name + '</div></td></tr>');
-                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
-                            $("#faces").find("#" + id).fadeIn();
-                        }
+                    // device is in landscape
+                    if($("#faces").find("tr").length > 0){
+                        // already a row
+                        $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + (weight + "%") + '; height: ' + (weight + "%") + ';">' + name + '</div></td></td>');
+                        
+                        $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                        $("#faces").find("#" + id).fadeIn();
                     } else {
-                        // device is vertical
-                        if($("#faces").find("tr").length > 0){
-                            // already a row
-                            $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).width() * weight) + 'px; height: ' + ($(window).width() * weight) + 'px;">' + name + '</div></td></td>');
-                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
-                            $("#faces").find("#" + id).fadeIn();
-                        } else {
-                            // no row, add it
-                            $("#faces").append('<tr><td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).width() * weight) + 'px; height: ' + ($(window).width() * weight) + 'px;">' + name + '</div></td></tr>');
-                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
-                            $("#faces").find("#" + id).fadeIn();
-                        }
-                    }
-                    
+                        // no row, add it
+                        $("#faces").append('<tr><td align="center"><div class="face-container" id="' + id +'" style="width:' + (weight + "%") + '; height: ' + (weight + "%") + '%;">' + name + '</div></td></tr>');
+                        $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                        $("#faces").find("#" + id).fadeIn();
+                    } 
                 }
             }
         </script>

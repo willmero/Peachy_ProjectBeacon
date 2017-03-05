@@ -42,11 +42,11 @@ function callbackAcceptedDeviced()
             var size = BT_Devices[name].rssi;
             if(size > 1)
                 return
-            if(size  > -85)
+            if(size  > -100)
                 bucketSize = 4
-            if(size  > -80)
+            if(size  > -100)
                 bucketSize = 3;
-            if(size > -75)
+            if(size > -85)
                 bucketSize = 2;
             if(size > -55)
                 bucketSize = 1;
