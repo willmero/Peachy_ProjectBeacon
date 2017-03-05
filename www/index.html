@@ -58,7 +58,9 @@
     </head>
     <body>
         <div id="BT_Devices"></div>
-        <div class="container" id="faces" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: block"></div>
+
+        <table class="container" id="faces" style="width: 100%; height: 100%; position: absolute; top: 0;"></table>
+
         <div class="container" id="options_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none;">
             <div class="options-header" style="width: 100%; height: 10%;">Based on your previous selections...</div>
             <div class="options-body" style="width: 100%; height: 90%;">
@@ -206,60 +208,66 @@
                 } else if(bucketID == 4){
                     weight = 0.20;
                 }
-
+                var thisItem;
+                var thisRow;
                 if($("#faces").find("#" + id).length > 0){
-                    // update size based on current size
-                    if($(window).width() > $(window).height()){
-                        // device is in landscape
-                         $("#faces").find("#" + id).animate({ width: ($(window).height() * weight) + "px", height: ($(window).height() * weight) + "px"}, {
-                            duration: 700,
-                            easing: 'easeOutElastic'
-                        });
+                    thisItem = $("#faces").find("#" + id).parent();
+                    thisRow = $("#faces").find("#" + id).parent().parent();
+                    if($(thisRow).find(".face-container").length > 1){
+                        // 2 faces
+                        // update size based on current size
+                        if($(window).width() > $(window).height()){
+                            // device is in landscape
+                             $("#faces").find("#" + id).animate({ width: ($(thisItem).height() * weight)/2 + "px", height: ($(thisItem).height() * weight)/2 + "px"}, {
+                                duration: 700,
+                                easing: 'easeOutElastic'
+                            });
+                        } else {
+                            // device is vertical
+                            $("#faces").find("#" + id).animate({ width: ($(window).width() * weight)/2 + "px", height: ($(window).width() * weight)/2 + "px"}, {
+                                duration: 700,
+                                easing: 'easeOutElastic'
+                            });
+                        }
                     } else {
-                        // device is vertical
-                        $("#faces").find("#" + id).animate({ width: ($(window).width() * weight) + "px", height: ($(window).width() * weight) + "px"}, {
-                            duration: 700,
-                            easing: 'easeOutElastic'
-                        });
+                        // 1 face
+                        // update size based on current size
+                        if($(window).width() > $(window).height()){
+                            // device is in landscape
+                             $("#faces").find("#" + id).animate({ width: ($(thisItem).height() * weight) + "px", height: ($(thisItem).height() * weight) + "px"}, {
+                                duration: 700,
+                                easing: 'easeOutElastic'
+                            });
+                        } else {
+                            // device is vertical
+                            $("#faces").find("#" + id).animate({ width: ($(window).width() * weight) + "px", height: ($(window).width() * weight) + "px"}, {
+                                duration: 700,
+                                easing: 'easeOutElastic'
+                            });
+                        }
                     }
                     
                 } else {
-                    if($(window).width() > $(window).height()){
-                        // device is in landscape
-                        if($("#faces").find("tr").length > 0){
-                            // already a row
-                            $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).height() * weight) + 'px; height: ' + ($(window).height() * weight) + 'px;">' + name + '</div></td></td>');
-                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
-                            $("#faces").find("#" + id).fadeIn();
-                        } else {
-                            // no row, add it
-                            $("#faces").append('<tr><td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).height() * weight) + 'px; height: ' + ($(window).height() * weight) + 'px;">' + name + '</div></td></tr>');
-                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
-                            $("#faces").find("#" + id).fadeIn();
-                        }
+                    thisItem = $("#faces").find("#" + id);
+                    if($("#faces").find("tr").length > 0){
+                        // already a row
+                        $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(thisItem).height() * weight) + 'px; height: ' + ($(thisItem).height() * weight) + 'px;">' + name + '</div></td></td>');
+                        $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                        $("#faces").find("#" + id).fadeIn();
                     } else {
-                        // device is vertical
-                        if($("#faces").find("tr").length > 0){
-                            // already a row
-                            $("#faces").find("tr").append('<td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).width() * weight) + 'px; height: ' + ($(window).width() * weight) + 'px;">' + name + '</div></td></td>');
-                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
-                            $("#faces").find("#" + id).fadeIn();
-                        } else {
-                            // no row, add it
-                            $("#faces").append('<tr><td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(window).width() * weight) + 'px; height: ' + ($(window).width() * weight) + 'px;">' + name + '</div></td></tr>');
-                            $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
-                            $("#faces").find("#" + id).fadeIn();
-                        }
+                        // no row, add it
+                        $("#faces").append('<tr><td align="center"><div class="face-container" id="' + id +'" style="width:' + ($(thisItem).height() * weight) + 'px; height: ' + ($(thisItem).height() * weight) + 'px;">' + name + '</div></td></tr>');
+                        $("#faces").find("#" + id).css("background-image", 'url("img/' + getUserPhoto(id) + '")');
+                        $("#faces").find("#" + id).fadeIn();
                     }
-                    
+                    AddClick();
                 }
             }
-
         </script>
         <script type="text/javascript" src="js/index.js"></script>
         <script>
             function AddClick() {
-                $("#faces-container").click(function() {
+                $(".face-container").click(function() {
                     console.log("Clicked");    
                     $("#faces").hide(500);
                     $("#options_container").show(500);
