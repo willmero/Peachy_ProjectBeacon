@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <div class="container" id="living_room_containter">
+        <div class="container" id="living_room_containter" style="display: block;">
             <div class="options-header" style="width: 100%; height: 10%;">In the <span class="text_highlight">Living Room</span>, you usually prefer to:</div>
             <div class="options-body" style="width: 100%; height: 90%;">
                 <div class="option-row pure-g">
@@ -116,8 +116,9 @@
                 <p>That will be in 20 minutes</p>
 
                 <div id="medication_container_button_ok" class="pure-u-1-2 option">
-                    <div class="option-button selectable">
-                        <span class="fa fa-calender"></span><span>OK</span>
+                    <div class="option-button selectable ok">
+                        <!--span class="fa fa-calender"></span-->
+                        OK
                     </div>
                 </div>
             </div>
@@ -310,7 +311,6 @@
                     
                 });
                 $("#option_button_meds").click(function() {
-                    console.log("click");
                     $("#option_button_meds").find(".selectable").css('background-color', 'green');
                     $("#living_room_containter").hide(500);
                     $("#authentication_container").show(500);
@@ -332,8 +332,6 @@
                 console.log("Added Click");
             }
             $(".container").css("background-image", "url('img/background.jpg')");
-                
-                
             function authcallback(auth)
             {
                 $("#authentication_container").hide(500);
