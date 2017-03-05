@@ -32,6 +32,8 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/pure-min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Peachy</title>
         <style>
@@ -55,9 +57,93 @@
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     </head>
     <body>
+        <div id="BT_Devices"></div>
+        <div id="faces_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: block;"></div>
+        <div id="options_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none;">
+            <div class="options-header" style="width: 100%; height: 10%;">Based on your previous selections...</div>
+            <div class="options-body" style="width: 100%; height: 90%;">
+                <div class="option-row pure-g">
+                    <div id="option-button-schedule" class="pure-u-1-2 option">
+                        <div class="option-button selectable">
+                            <span class="fa fa-calendar"></span><span> Schedule</span>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-2 option">
+                        <div class="option-button selectable">
+                            <span class="fa fa-map-marker"></span><span> Location</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-row pure-g">
+                    <div class="pure-u-1-2 option">
+                        <div>
+                            <span class="fa fa-medkit"></span><span> Medications</span>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-2 option">
+                        <div>
+                            <span class="fa fa-question-circle-o"></span><span> Lost Item</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-row pure-g">
+                    <div class="pure-u-1-2 option">
+                        <div>
+                            <span class="fa fa-gamepad"></span><span> Acitvities</span>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-2 option">
+                        <div>
+                            <span class="fa fa-commenting-o"></span><span> Reminders</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-row pure-g">
+                    <div class="pure-u-1-2 option">
+                        <div>
+                            <span class="fa fa-search"></span><span> Browse Apps</span>
+                        </div>
+                    </div>
+                    <div class="pure-u-1-2 option">
+                        <div>
+                            <span class="fa fa-warning"></span><span> I need help!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="schedule_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;">
+            <div class="schedule-header" style="width: 100%; height: 70%;">
+                <p>Looks like it's <span>almost lunchtime</span>.</p>
+                <p>Would you like to head over to the dinning hall?</p>
+            </div>
+            <div class="schedule-body pure-g" style="width: 100%; height: 30%;">
+                <div id="schedule-button-yes" class="pure-u-1-2 schedule"><div class="selectable">Yes</div></div>
+                <div class="pure-u-1-2 schedule"><div>No</div></div>
+            </div>
+        </div>
+        <div id="directions_container_left" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;">
+            <div class="directions_header">
+                <p>The DINING HALL is straight down to your <span>left</span></p>
+            </div>
+            <div class="directions_body">
+                <span class="fa fa-long-arrow-left fa-5x"></span>
+            </div>
+        </div>
+        <div id="directions_container_right" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;">
+            <div class="directions_header">
+                <p>Oops! Please turn around and take a <span>right</span> on the next corner.</p>
+            </div>
+            <div class="directions_body">
+                <span class="fa fa-long-arrow-right fa-5x"></span>
+            </div>
+        </div>
+
+        <div id="finished_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;"></div>
+
         <div id="BT_Devices" style="display: none;"></div>
         <table id="faces" class="faces-table"></table>
-        
+
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/BTScan.js"></script>
         <script>
@@ -72,7 +158,7 @@
             function onResume()
             {
                 BTScan_Start();
-            }  
+            }
 
             function onReady()
             {
@@ -89,14 +175,14 @@
 
             function deviceCallback(name, bucketID, id, true_rssi_value)
             {
-                var ID = name.replace(new RegExp(" ", 'g'), "_");
+               var ID = name.replace(new RegExp(" ", 'g'), "_");
                 if($("#BT_Devices").find("#" + ID).length > 0){
                     $("#BT_Devices").find("#" + ID).html('ID: '+id+', bucketID: '+ bucketID+', name: '+ name + ', true rssi: ' + true_rssi_value);
                 } else {
                     $("#BT_Devices").append('<p class="btdevice" id="' + ID + '">ID: '+id+', bucketID: '+ bucketID+', name: '+ name+'</p>');
                 }
 
-                createFaceBubble(ID, bucketID);                
+                createFaceBubble(ID, bucketID);
             }
 
             function getUserPhoto(id){
@@ -144,9 +230,27 @@
                     } 
                 }
             }
+
         </script>
         <script type="text/javascript" src="js/index.js"></script>
-
-
+        <script>
+            (function() {
+                $("#faces_container").click(function() {
+                    $("#faces").hide();
+                    $("#faces_container").hide(500);
+                    $("#options_container").show(500);
+                });
+                $("#option-button-schedule").click(function() {
+                    $("#option-button-schedule").find(".selectable").css('background-color', 'green');
+                    $("#options_container").hide(500);
+                    $("#schedule_container").show(500);
+                });
+                $("#schedule-button-yes").click(function() {
+                    $("#schedule-button-yes").find(".selectable").css('background-color', 'green');
+                    $("#schedule_container").hide(500);
+                    $("#directions_container_left").show(500);
+                });
+            })();
+        </script>
     </body>
 </html>
