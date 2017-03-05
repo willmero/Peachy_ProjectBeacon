@@ -2,6 +2,7 @@ var BT_Devices = {};
 var BT_ACCEPTED_LIST = [];
 var BT_INIT = false;
 var BT_ACCEPTED_DEVICE_REFRESH_RATE = 100;
+var BT_AUTH_DEVICES = {};
 
 function AddDevice(device)
 {
@@ -83,6 +84,38 @@ function BTScan_Stop()
         console.log("Successfully Stopped BTScan");
     }, onBTFail);
 }
+
+// function BTScan_Auth(name, authCallback)
+// {
+//     var accepted = BT_ACCEPTED_LIST.find((val) => {return val.name === name});
+//     if(accepted){
+        
+//         var auth = BT_AUTH_DEVICES[name];
+//         if(auth ){
+//             if(auth === 3)
+//             {
+//                 delete BT_AUTH_DEVICES[name];
+//                 authCallback(true);
+//             }
+//             else
+//             {
+//                 if()
+//                 BT_AUTH_DEVICES[name]++;
+//                 setTimeout(BTScan_Auth, BT_ACCEPTED_DEVICE_REFRESH_RATE, name, authCallback);
+//             }
+//         }
+//         else
+//         {
+//            BT_AUTH_DEVICES[name] = 0; 
+//            setTimeout(BTScan_Auth, BT_ACCEPTED_DEVICE_REFRESH_RATE, name, authCallback);
+//         }
+//     }
+//     else
+//     {
+//         authCallback(false);
+//     }
+// }
+
 
 function onBTFail(error)
 {
