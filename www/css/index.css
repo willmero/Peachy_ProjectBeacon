@@ -217,7 +217,8 @@ h1 {
     position: absolute;
     top: 0;
     display: none;
-    font-size: 0.5em;
+    font-size: 1em;
+    padding-top: 40px;
  }
 
 .text_highlight
