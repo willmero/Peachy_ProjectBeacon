@@ -32,8 +32,8 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/pure-min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Peachy</title>
         <style>
@@ -57,68 +57,90 @@
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     </head>
     <body>
-        <div id="BT_Devices"></div>
-        <table class="container" id="faces" style="width: 100%; height: 100%; position: absolute; top: 0;"></table>
-        <div class="container" id="options_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none;">
-            <div class="options-header" style="width: 100%; height: 10%;">In the Living Room, you usually prefer to:</div>
+        <table id="faces" style="width: 100%; height: 100%; position: absolute; top: 0; background-image: url('img/background.jpg'); background-size: cover;"></table>
+        <div class="container" id="friendly_screen_living_room">
+            <div class="directions_header">
+                <p>Hi <span id="fir_name" class="text_highlight">Thomas</span>,</p>
+                <p>Welcome to the Living Room</p>
+                <!--div class="pure-u-1-2 option" style="disply:none">
+                        <div class="option-button selectable">
+                          <span>Help</span>
+                        </div>
+                    </div-->
+            </div>
+        </div>
+
+        <div class="container" id="living_room_containter">
+            <div class="options-header" style="width: 100%; height: 10%;">In the <span class="text_highlight">Living Room</span>, you usually prefer to:</div>
             <div class="options-body" style="width: 100%; height: 90%;">
                 <div class="option-row pure-g">
-                    <div id="option-button-schedule" class="pure-u-1-2 option">
+                    <div class="pure-u-1-2 option option-full">
                         <div class="option-button selectable">
                             <span class="fa fa-talk"></span><span> Talk to a caregiver</span>
                         </div>
                     </div>
-                    <!--
-                    <div class="pure-u-1-2 option">
-                        <div class="option-button selectable">
-                            <span class="fa fa-map-marker"></span><span> Location</span>
-                        </div>
-                    </div>
-                    -->
                 </div>
                 <div class="option-row pure-g">
-                    <div class="pure-u-1-2 option">
-                        <div>
+                    <div id="option_button_meds" class="pure-u-1-2 option option-full ">
+                        <div class="option-button selectable">
                             <span class="fa fa-medkit"></span><span> Take medications</span>
                         </div>
                     </div>
-                    <!--
-                    <div class="pure-u-1-2 option">
-                        <div>
-                            <span class="fa fa-question-circle-o"></span><span> Lost Item</span>
-                        </div>
-                    </div>
-                    -->
                 </div>
                 <div class="option-row pure-g">
-                    <div class="pure-u-1-2 option">
-                        <div>
+                    <div class="pure-u-1-2 option option-full">
+                        <div class="option-button selectable">
                             <span class="fa fa-gamepad"></span><span> Watch TV</span>
                         </div>
                     </div>
-                    <!--
-                    <div class="pure-u-1-2 option">
-                        <div>
-                            <span class="fa fa-commenting-o"></span><span> Reminders</span>
-                        </div>
-                    </div>
-                    -->
                 </div>
                 <div class="option-row pure-g">
                     <div class="pure-u-1-2 option">
-                        <div>
+                        <div class="option-button selectable">
                             <span class="fa fa-warning"></span><span> I'm lost</span>
                         </div>
                     </div>
                     <div class="pure-u-1-2 option">
-                        <div>
+                        <div class="option-button selectable">
                             <span class="fa fa-calender"></span><span> See my schedule</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container"  id="schedule_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;">
+
+        <div class="container"  id="medication_container">
+            <div class="directions_header">
+                <p>Your next Medication is to be taken at <span class="text-highlight">3:30pm</span>.</p>
+                </br>
+                <p>That will be in 20 minutes</p>
+
+                <div id="medication_container_button_ok" class="pure-u-1-2 option">
+                    <div class="option-button selectable ok">
+                        OK
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container"  id="lunch_time_container" style="">
+            <div class="schedule-header" style="width: 100%; height: 70%;">
+                <p>Looks like it's <span class="text-highlight">almost lunchtime</span>.</p>
+                <p>Would you like to head over to the dinning hall?</p>
+            </div>
+            <div class="schedule-body pure-g" style="width: 100%; height: 30%;">
+                <div id="schedule-button-yes" class="pure-u-1-2 schedule"><div class="selectable">Yes</div></div>
+                <div class="pure-u-1-2 schedule"><div>No</div></div>
+            </div>
+        </div>
+
+
+        <div class="container" id="authentication_container">
+            <img class="auth_img" src="img/ProjectBeacon-3ab.jpg"></img>
+        </div>
+
+        <div class="container"  id="schedule_container" >
             <div class="schedule-header" style="width: 100%; height: 70%;">
                 <p>Looks like it's <span>almost lunchtime</span>.</p>
                 <p>Would you like to head over to the dinning hall?</p>
@@ -128,7 +150,8 @@
                 <div class="pure-u-1-2 schedule"><div>No</div></div>
             </div>
         </div>
-        <div class="container" id="directions_container_left" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;">
+
+        <div class="container" id="directions_container_left" >
             <div class="directions_header">
                 <p>The DINING HALL is straight down to your <span>left</span></p>
             </div>
@@ -136,7 +159,7 @@
                 <span class="fa fa-long-arrow-left fa-5x"></span>
             </div>
         </div>
-        <div class="container" id="directions_container_right" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;">
+        <div class="container" id="directions_container_right" >
             <div class="directions_header">
                 <p>Oops! Please turn around and take a <span>right</span> on the next corner.</p>
             </div>
@@ -145,7 +168,10 @@
             </div>
         </div>
 
-        <div class="container" id="finished_container" style="width: 100%; height: 100%; position: absolute; top: 0; padding-top: 50px; display: none; display: none;"></div>
+        <div class="container" id="finished_container" >
+
+
+        </div>
 
         <!-- <div id="BT_Devices" style="display: none;"></div> -->
         <!-- <table id="faces" class="faces-table"></table> -->
@@ -154,7 +180,7 @@
         <script type="text/javascript" src="js/BTScan.js"></script>
         <script>
 
-            var userList = [["Pebble_Time_LE_213F", "elder.jpg"], ["Pebble_Time_LE_DC6A", "elder2.jpg"]] 
+            var userList = [["Pebble_Time_LE_213F", "patient-woman.jpg"], ["Pebble_Time_LE_DC6A", "elder2.jpg"]] 
 
             function onPause()
             {
@@ -176,6 +202,7 @@
             function bubbledestroy(name)
             {
                 var id = name.replace(new RegExp(" ", 'g'), "_");
+                $("#faces").find("#" + id).parent().fadeOut();
                 $("#faces").find("#" + id).parent().remove();
             }
 
@@ -205,9 +232,9 @@
                 if(bucketID == 1){
                     weight = 1;
                 } else if(bucketID == 2){
-                    weight = 0.65;
+                    weight = 0.40;
                 } else if(bucketID == 3){
-                    weight = 0.35;
+                    weight = 0.25;
                 } else if(bucketID == 4){
                     weight = 0.20;
                 }
@@ -221,13 +248,13 @@
                         // update size based on current size
                         if($(window).width() > $(window).height()){
                             // device is in landscape
-                             $("#faces").find("#" + id).animate({ width: ($(thisItem).height() * weight)/2 + "px", height: ($(thisItem).height() * weight)/2 + "px"}, {
+                             $("#faces").find("#" + id).animate({ width: (($(thisItem).height() * weight)/2)+100 + "px", height: (($(thisItem).height() * weight)/2)+100 + "px"}, {
                                 duration: 700,
                                 easing: 'easeOutElastic'
                             });
                         } else {
                             // device is vertical
-                            $("#faces").find("#" + id).animate({ width: ($(window).width() * weight)/2 + "px", height: ($(window).width() * weight)/2 + "px"}, {
+                            $("#faces").find("#" + id).animate({ width: (($(thisItem).height() * weight)/2)+100 + "px", height: (($(thisItem).height() * weight)/2)+100 + "px"}, {
                                 duration: 700,
                                 easing: 'easeOutElastic'
                             });
@@ -268,25 +295,75 @@
         </script>
         <script type="text/javascript" src="js/index.js"></script>
         <script>
+            var id = ""
+            function AddTransition() {
+                if (id === "Pebble Time LE DC6A" || id === "") {
+                    setTimeout(function(){
+                        $("#friendly_screen_living_room").hide(500);
+                        $("#living_room_containter").show(500);
+                    }, 3000);
+                } else if (id === "Pebble Time LE 213F") {
+                    $("#friendly_screen_living_room").hide(500);
+                    $("#lunch_time_container").show(500);
+                }
+            }
             function AddClick() {
                 $(".face-container").click(function() {
-                    console.log("Clicked");    
+                    
+                    id = $(this).attr("id").replace(new RegExp("_", 'g'), " ");
                     $("#faces").hide(500);
-                    $("#options_container").show(500);
+                    // $("#fir_name").html(names[id]);
+                    // $("#living_room_containter").show(500);
+
+                    $("#friendly_screen_living_room").show(500);
+                    $(".container").css("background-size", "cover");
+
+                    AddTransition();
+                    
                 });
-                $("#option-button-schedule").click(function() {
-                    $("#option-button-schedule").find(".selectable").css('background-color', 'green');
-                    $("#options_container").hide(500);
-                    $("#schedule_container").show(500);
+            }
+                $("#option_button_meds").click(function() {
+                    $("#option_button_meds").find(".selectable").css('background-color', 'green');
+                    $("#living_room_containter").hide(500);
+                    $("#authentication_container").show(500);
+                    $(".container").css("background-size", "cover");
+                    console.log(id);
+                    //BTScan_Auth(id, authcallback);
+                    setTimeout(function(){
+                        $("#authentication_container").hide(500);
+                        $("#medication_container").show(500);
+                        $(".container").css("background-size", "cover");
+                    }, 3000)
+                    
+                });
+
+                $("#medication_container_button_ok").click(function() {
+                    $("#medication_container").hide(500);
+                    $("#faces").show(500);
                 });
                 $("#schedule-button-yes").click(function() {
                     $("#schedule-button-yes").find(".selectable").css('background-color', 'green');
                     $("#schedule_container").hide(500);
                     $("#directions_container_left").show(500);
+                    $("#directions_container_left").click(function(){
+                        $("#lunch_time_container").hide(500);
+                        $("#directions_container_left").hide(500);
+                        $("#faces").show(500);
+                    });
+                    $(".container").css("background-size", "cover");
                 });
                 console.log("Added Click");
+            
+            $(".container").css("background-image", "url('img/background.jpg')");
+            function authcallback(auth)
+            {
+                $("#authentication_container").hide(500);
+                $("#medication_container").show(500);
+                $(".container").css("background-size", "cover");
             }
-            $(".container").css("background-image", url('../img/background.jpg'));
+            $(".container").css("background-size", "cover");
+            AddClick();
+            // AddTransition();
         </script>
     </body>
 </html>

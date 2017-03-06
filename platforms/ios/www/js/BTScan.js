@@ -3,6 +3,7 @@ var BT_ACCEPTED_LIST = [];
 var BT_INIT = false;
 var BT_ACCEPTED_DEVICE_REFRESH_RATE = 100;
 var BT_AUTH_DEVICES = {};
+var BT_AUTH = false;
 
 function AddDevice(device)
 {
@@ -49,7 +50,7 @@ function callbackAcceptedDeviced()
                 bucketSize = 3;
             if(size > -100)
                 bucketSize = 2;
-            if(size > -70)
+            if(size > -60)
                 bucketSize = 1;
 
             item.callback(name, bucketSize, BT_Devices[name].id,  BT_Devices[name].rssi);            
@@ -87,40 +88,56 @@ function BTScan_Stop()
 
 function BTScan_Auth(name, authCallback)
 {
-    var accepted = BT_ACCEPTED_LIST.find((val) => {return val.name === name});
-    if(accepted){
-        
-        var auth = BT_AUTH_DEVICES[name];
-        if(auth){
-            if(auth === 2)
-            {
-                delete BT_AUTH_DEVICES[name];
-                authCallback(true);
-                return;
-            }
-            else
-            {
-                if(BT_Devices[name].rssi > -35)
-                {
-                    BT_AUTH_DEVICES[name]++;
-                }
-                else
-                {
-                    BT_AUTH_DEVICES[name] = 1;
-                }
-                setTimeout(BTScan_Auth, BT_ACCEPTED_DEVICE_REFRESH_RATE, name, authCallback);
-            }
-        }
-        else
-        {
-           BT_AUTH_DEVICES[name] = 1; 
-           setTimeout(BTScan_Auth, BT_ACCEPTED_DEVICE_REFRESH_RATE, name, authCallback);
-        }
-    }
-    else
-    {
-        authCallback(false);
-    }
+    BT_AUTH = true;
+    //_BTScan_Auth(name, authCallback);
+    authCallback(true);
+}
+
+function _BTScan_Auth(name, authCallback)
+{
+    authCallback(true);
+    // if(BT_AUTH)
+    // {
+    //     var accepted = BT_ACCEPTED_LIST.find((val) => {return val.name === name});
+    //     if(accepted){
+            
+    //         var auth = BT_AUTH_DEVICES[name];
+    //         if(auth){
+    //             if(auth === 2)
+    //             {
+    //                 delete BT_AUTH_DEVICES[name];
+    //                 authCallback(true);
+    //                 BT_AUTH = false;
+    //                 return;
+    //             }
+    //             else
+    //             {
+    //                 if(BT_Devices[name].rssi > -50)
+    //                 {
+    //                     BT_AUTH_DEVICES[name]++;
+    //                 }
+    //                 else
+    //                 {
+    //                     BT_AUTH_DEVICES[name] = 1;
+    //                 }
+    //                 if(show)
+    //                     console.log("BAD");
+    //                 setTimeout(BTScan_Auth, BT_ACCEPTED_DEVICE_REFRESH_RATE, name, authCallback);
+    //             }
+    //         }
+    //         else
+    //         {
+    //            BT_AUTH_DEVICES[name] = 1; 
+    //             if(show)
+    //                 console.log("BAD");
+    //            setTimeout(BTScan_Auth, BT_ACCEPTED_DEVICE_REFRESH_RATE, name, authCallback);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         authCallback(false);
+    //     }
+    // }
 }
 
 

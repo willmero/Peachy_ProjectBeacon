@@ -86,7 +86,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		cyZpUMwGT8GYyI4yTo43Fup41Fo=
+		B1pLNVq24LM5w/PpdAiQ5Jd+yRU=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -94,7 +94,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		NRCU01WGIMr8FbfNJ69EswoA5tE=
+		xJJ+5KewXy/YO1Xe7oAgj/wpSiY=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -158,7 +158,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		LMesJtYC+edMkliUvoOF6Aj2XdU=
+		5w6xa2WJzz5R9aBsNyVj5dkygIg=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -198,11 +198,15 @@
 		</data>
 		<key>www/css/index.css</key>
 		<data>
-		E5QDhdJvVplU9DniriqNaonAswQ=
+		DHoZmpJ+60H4VVP12uQTAdJHUPo=
 		</data>
 		<key>www/css/pure-min.css</key>
 		<data>
 		ia9y/rvqsE+hAAq2KhAb3FErc3Y=
+		</data>
+		<key>www/img/ProjectBeacon-3ab.jpg</key>
+		<data>
+		n9AOdc/EZI+ZHB7+pTQF8iaHFeo=
 		</data>
 		<key>www/img/background.jpg</key>
 		<data>
@@ -220,13 +224,17 @@
 		<data>
 		MW0GF0+VJyF3L6n2kH6NKUswUL0=
 		</data>
+		<key>www/img/patient-woman.jpg</key>
+		<data>
+		t07pRG1VQD51IUcxUx+HIpVKSd4=
+		</data>
 		<key>www/index.html</key>
 		<data>
-		cm01YA0PPXQXdlpchffQXxe8wbA=
+		KKIOrhQ9c5a208CeDTDzlDRweHU=
 		</data>
 		<key>www/js/BTScan.js</key>
 		<data>
-		5qvTk0BuwJrRjikWhxlWoL/qZM4=
+		OFi+B/KVLuD5GNY19VFVyVeoTZ0=
 		</data>
 		<key>www/js/index.js</key>
 		<data>
@@ -471,11 +479,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cyZpUMwGT8GYyI4yTo43Fup41Fo=
+			B1pLNVq24LM5w/PpdAiQ5Jd+yRU=
 			</data>
 			<key>hash2</key>
 			<data>
-			UEPyjYVkAoLJ99BAtEJaCtbWa6kQ3tCjL4SuR7B4zFY=
+			bZjxnYl70yVqLVYPllANAx6o8QZ4jdZE1ZXhs54lIOk=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -493,11 +501,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			NRCU01WGIMr8FbfNJ69EswoA5tE=
+			xJJ+5KewXy/YO1Xe7oAgj/wpSiY=
 			</data>
 			<key>hash2</key>
 			<data>
-			f5PqiDi97cgPxL7D2UobKL+RvZK2d6Hh+GJz0pIF5zQ=
+			z2BCF8I/8+aaMdN3dzUPf31IGgz3A09T4mWQIUTpCBM=
 			</data>
 		</dict>
 		<key>LaunchImage-568h@2x.png</key>
@@ -658,11 +666,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LMesJtYC+edMkliUvoOF6Aj2XdU=
+			5w6xa2WJzz5R9aBsNyVj5dkygIg=
 			</data>
 			<key>hash2</key>
 			<data>
-			kvSRiEH2JwQhSGCQji8LbnJyT2a38t9Ztr7bVJtL8sU=
+			meDuh76Fux+3q15ZWkCgszzHt+TTZi9YZKINvqxDnJ8=
 			</data>
 		</dict>
 		<key>archived-expanded-entitlements.xcent</key>
@@ -757,11 +765,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			E5QDhdJvVplU9DniriqNaonAswQ=
+			DHoZmpJ+60H4VVP12uQTAdJHUPo=
 			</data>
 			<key>hash2</key>
 			<data>
-			9YthOvP99jpGKNAJ5EQqzikvxlmowK+nNDhxtbtz1cI=
+			qIt1AHSZhgR+xkdHWATlH0vzw2O0gSEZ5g250+IMtE0=
 			</data>
 		</dict>
 		<key>www/css/pure-min.css</key>
@@ -773,6 +781,17 @@
 			<key>hash2</key>
 			<data>
 			l8LBIT/hSUv+lPB5sCHme+XoztA5gysT4rV/kDYas/c=
+			</data>
+		</dict>
+		<key>www/img/ProjectBeacon-3ab.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			n9AOdc/EZI+ZHB7+pTQF8iaHFeo=
+			</data>
+			<key>hash2</key>
+			<data>
+			5M7gH99HLHmoAyc4Ev+IRA/puQhVRDBk7cUx7hn0l8I=
 			</data>
 		</dict>
 		<key>www/img/background.jpg</key>
@@ -819,26 +838,37 @@
 			8JmHrhEr2x//0WYZDQyLdQyvokuPf/rAP06Yuah4neM=
 			</data>
 		</dict>
+		<key>www/img/patient-woman.jpg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			t07pRG1VQD51IUcxUx+HIpVKSd4=
+			</data>
+			<key>hash2</key>
+			<data>
+			ciogqoDYotN+TJ+fSZrL+OjMs+8uJNU0UqSrsWM6rwk=
+			</data>
+		</dict>
 		<key>www/index.html</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			cm01YA0PPXQXdlpchffQXxe8wbA=
+			KKIOrhQ9c5a208CeDTDzlDRweHU=
 			</data>
 			<key>hash2</key>
 			<data>
-			pTvOiYBPVylycfCEOvrYA+Abd0XiOv/Xu9f32ms3sIE=
+			4zcPC1UM0nCcdqssLkw9UYqE8GwfuMNiOyaDI0C7zy4=
 			</data>
 		</dict>
 		<key>www/js/BTScan.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5qvTk0BuwJrRjikWhxlWoL/qZM4=
+			OFi+B/KVLuD5GNY19VFVyVeoTZ0=
 			</data>
 			<key>hash2</key>
 			<data>
-			5DhWlDSBTeVEkoWADUNi2F0CXOvQrE5X1clI4RafeVY=
+			G2nuAmRL+bN0NelU3k/96V5Gn+G0FD3IZC3U0XGPN0U=
 			</data>
 		</dict>
 		<key>www/js/index.js</key>

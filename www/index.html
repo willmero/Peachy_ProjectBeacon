@@ -33,7 +33,7 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/pure-min.css">
-        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Peachy</title>
         <style>
@@ -61,7 +61,7 @@
         <div class="container" id="friendly_screen_living_room">
             <div class="directions_header">
                 <p>Hi <span id="fir_name" class="text_highlight">Thomas</span>,</p>
-                <p>Welocome to the Living Room</p>
+                <p>Welcome to the Living Room</p>
                 <!--div class="pure-u-1-2 option" style="disply:none">
                         <div class="option-button selectable">
                           <span>Help</span>
@@ -232,9 +232,9 @@
                 if(bucketID == 1){
                     weight = 1;
                 } else if(bucketID == 2){
-                    weight = 0.65;
+                    weight = 0.40;
                 } else if(bucketID == 3){
-                    weight = 0.35;
+                    weight = 0.25;
                 } else if(bucketID == 4){
                     weight = 0.20;
                 }
@@ -297,10 +297,12 @@
         <script>
             var id = ""
             function AddTransition() {
-                if (id === "Pebble Time LE 213F" || id === "") {
-                    $("#friendly_screen_living_room").hide(1500);
-                    $("#living_room_containter").show(1500);
-                } else if (id === "Pebble Time LE DC6A") {
+                if (id === "Pebble Time LE DC6A" || id === "") {
+                    setTimeout(function(){
+                        $("#friendly_screen_living_room").hide(500);
+                        $("#living_room_containter").show(500);
+                    }, 3000);
+                } else if (id === "Pebble Time LE 213F") {
                     $("#friendly_screen_living_room").hide(500);
                     $("#lunch_time_container").show(500);
                 }
@@ -316,31 +318,42 @@
                     $("#friendly_screen_living_room").show(500);
                     $(".container").css("background-size", "cover");
 
-
-                    setTimeout(AddTransition(), 3000);
+                    AddTransition();
                     
                 });
+            }
                 $("#option_button_meds").click(function() {
                     $("#option_button_meds").find(".selectable").css('background-color', 'green');
                     $("#living_room_containter").hide(500);
                     $("#authentication_container").show(500);
                     $(".container").css("background-size", "cover");
                     console.log(id);
-                    BTScan_Auth(id, authcallback);
+                    //BTScan_Auth(id, authcallback);
+                    setTimeout(function(){
+                        $("#authentication_container").hide(500);
+                        $("#medication_container").show(500);
+                        $(".container").css("background-size", "cover");
+                    }, 3000)
+                    
                 });
 
                 $("#medication_container_button_ok").click(function() {
                     $("#medication_container").hide(500);
-                    $("#living_room_containter").show(500);
+                    $("#faces").show(500);
                 });
                 $("#schedule-button-yes").click(function() {
                     $("#schedule-button-yes").find(".selectable").css('background-color', 'green');
                     $("#schedule_container").hide(500);
                     $("#directions_container_left").show(500);
+                    $("#directions_container_left").click(function(){
+                        $("#lunch_time_container").hide(500);
+                        $("#directions_container_left").hide(500);
+                        $("#faces").show(500);
+                    });
                     $(".container").css("background-size", "cover");
                 });
                 console.log("Added Click");
-            }
+            
             $(".container").css("background-image", "url('img/background.jpg')");
             function authcallback(auth)
             {
