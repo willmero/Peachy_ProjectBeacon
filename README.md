@@ -21,5 +21,5 @@ The the challenge that we are trying to address using this platform is the probl
 
 Our platform aims to provide a passive interactive tool situated in easily recognizable physical spaces, that can be activated based on a user's proximity to the system. The primary step here is design the interface in such a way that the user can build a positive association with the system, through the use of simple but distinguishable interaction elements and imagery. Once that association is achieved, the user is provided with a few simple views that helps them understand their current physical location and they options or activities that they would normally engage in in that space. The approach here is to not necessarily make them try to remember why they got here, but more so what they can do now that they are here. In addition to this, it ties into the user's routine in order to guide them what they should or could be doing next.
 
-## DEMO
+## DEMO VIDEO (Click to navigate to Youtube.com)
 [![Project Beacon Demo Video](https://img.youtube.com/vi/wa0x2T7yark/0.jpg)](https://www.youtube.com/watch?v=wa0x2T7yark)
